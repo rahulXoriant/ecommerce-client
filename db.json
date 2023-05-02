@@ -1,0 +1,132 @@
+{
+    "stock": [
+      {
+        "id": 1,
+        "amount": 3
+      },
+      {
+        "id": 2,
+        "amount": 5
+      },
+      {
+        "id": 3,
+        "amount": 2
+      },
+      {
+        "id": 4,
+        "amount": 1
+      },
+      {
+        "id": 5,
+        "amount": 5
+      },
+      {
+        "id": 6,
+        "amount": 10
+      }
+    ],
+    "category": [
+      {
+        "id": 1,
+        "name": "Sneakers",
+        "slug": "sneakers"
+      },
+      {
+        "id": 2,
+        "name": "Boots",
+        "slug": "boots"
+      },
+      {
+        "id": 3,
+        "name": "Sliders",
+        "slug": "sliders"
+      },
+      {
+        "id": 4,
+        "name": "Heels",
+        "slug": "heels"
+      },
+      {
+        "id": 5,
+        "name": "Formal Shoes",
+        "slug": "formal-shoes"
+      },
+      {
+        "id": 6,
+        "name": "Hiking Shoes",
+        "slug": "hiking-shoes"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "title": "U.S. Polo Assn. Men White Clarkin Sneakers",
+        "price": 1179,
+        "category": 1,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10339033/2022/4/25/3170e623-ab80-4678-9628-14cb6033ab171650883660619USPoloAssnMenWhiteClarkinSneakers1.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Puma Men Grey Dynamite Slip-On Sneakers",
+        "price": 2249,
+        "category": 1,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19150424/2022/11/6/2e665785-7fd5-43aa-9036-96bb2e55d0ea1667717814913PumaMenGreyDynamiteSlip-OnSneakers1.jpg"
+      },
+      {
+        "id": 3,
+        "title": "ADIDAS Men White Solid Advantage Base Sneakers",
+        "price": 6599,
+        "category": 1,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18374046/2023/1/10/3c04730f-9a03-48e1-b2dd-7c2b993e430f1673345296800-ADIDAS-Men-White-Solid-Advantage-Base-Sneakers-1501673345296-2.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Nike Men Black Waffle One Leather Sneakers",
+        "price": 10295,
+        "category": 1,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19934934/2022/10/20/bd603d84-ac6c-4bd8-baa9-ae085f909dde1666251293070-Nike-Waffle-One-Leather-Mens-Shoes-561666251292752-1.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Puma Men Black Solid Regular Knit Slip-On Sneakers With Brand Logo Print Detail",
+        "price": 2449,
+        "category": 1,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18814728/2022/11/6/a2569659-f49b-4d80-9b32-50aff513d5091667717407462PumaMenBlackSolidRegularKnitSlip-OnSneakersWithBrandLogoPrin1.jpg"
+      },
+      {
+        "id": 6,
+        "title": "Nike Men Black Solid Sliders",
+        "price": 3325,
+        "category": 3,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18800676/2022/6/29/223eb601-e28d-4bb9-b54a-2af4c853c3bc1656505130282-Nike-Air-Max-Cirro-Mens-Slides-2421656505130032-4.jpg"
+      },
+      {
+        "id": 7,
+        "title": "ADIDAS Originals Men Black & White Adilette Lite Printed Sustainable Sliders",
+        "price": 1799,
+        "category": 3,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18800676/2022/6/29/223eb601-e28d-4bb9-b54a-2af4c853c3bc1656505130282-Nike-Air-Max-Cirro-Mens-Slides-2421656505130032-4.jpg"
+      },
+      {
+        "id": 8,
+        "title": "Nike Men Brand Logo Embroidered Victori One Next Nature Sliders",
+        "price": 2545,
+        "category": 3,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/21252156/2023/1/9/95eea3d5-1158-471e-a93e-217b661d88701673248538240-Nike-Victori-One-Next-Nature-Mens-Slides-6131673248537896-1.jpg"
+      },
+      {
+        "id": 9,
+        "title": "ADIDAS Originals Men Black & White Printed Adilette Sliders",
+        "price": 3219,
+        "category": 3,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18737854/2022/7/25/bd77d6cf-ac1e-4141-bbc2-4f74c17e21ad1658740364658-ADIDAS-Originals-Men-Black--White-Printed-Adilette-Sliders-2-1.jpg"
+      },
+      {
+        "id": 10,
+        "title": "UNDER ARMOUR Men Black Printed UA Ansa Graphic Sliders",
+        "price": 1697,
+        "category": 3,
+        "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18740370/2022/9/12/7187f8c9-0f30-4b8f-9fde-120982c02b3c1662971529525UAMAnsaGraphic1.jpg"
+      }
+    ]
+}

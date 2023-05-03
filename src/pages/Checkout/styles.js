@@ -5,6 +5,16 @@ export const Container = styled.div`
   background: #fff;
   border-radius: 4px;
 
+  > div.no-product-cart-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+  }
+
   footer {
     display: flex;
     margin-top: 30px;
@@ -13,12 +23,11 @@ export const Container = styled.div`
 
     button {
       background: rgb(241, 148, 32);
-      color: #fff;
+      color: #ffffff;
       border: 0;
       border-radius: 4px;
       padding: 12px 20px;
       font-weight: bold;
-      text-transform: uppercase;
       transition: background 0.2s;
 
       &:hover {

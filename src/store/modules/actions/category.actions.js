@@ -1,30 +1,26 @@
-import { useDispatch } from 'react-redux';
-
-
 // add to cart actions
 export const GET_CATEGORIES_PENDING = 'GET_CATEGORIES_PENDING';
 export const GET_CATEGORIES_SUCCESS = 'GET_CATEGORIES_SUCCESS';
 export const GET_CATEGORIES_REJECTED = 'GET_CATEGORIES_REJECTED';
 
-const dispatch = useDispatch();
-
-export function getCategoriesPending() {
+export const getCategoriesPending = () => {
   return {
     type: GET_CATEGORIES_PENDING,
+    payload: { value: null, loading: false }
   };
 }
 
-export function getCategoriesSuccess(category) {
+export const getCategoriesSuccess = (categories) => {
   return {
     type: GET_CATEGORIES_SUCCESS,
-    category,
+    payload: { value: categories, loading: false },
   };
 }
 
-export function getCategoriesRejected(message) {
+export const getCategoriesRejected = (message) => {
   return {
     type: GET_CATEGORIES_REJECTED,
-    message,
+    payload: { value: null, message: message, loading: false },
   };
 }
 

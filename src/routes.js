@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Category from './pages/Category';
-import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Layout from './layouts/Layout';
 
 const routes = () => {
@@ -13,7 +13,7 @@ const routes = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/category/:categorySlug" element={<Category />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>

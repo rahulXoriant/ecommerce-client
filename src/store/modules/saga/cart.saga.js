@@ -1,5 +1,4 @@
 import { call, select, put, all, takeLatest } from 'redux-saga/effects';
-import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
 import { formatPrice } from '../../../utils/format';
@@ -8,7 +7,8 @@ import {
   UPDATE_CART_AMOUNT_PENDING, 
   addToCartSuccess, 
   addToCartRejected, 
-  updateAmountSuccess 
+  updateAmountSuccess, 
+  updateAmountRejected
 } from '../actions/cart.actions';
 
 function* addToCart(action) {
@@ -25,7 +25,7 @@ function* addToCart(action) {
     const amount = currentAmount + 1;
   
     if (amount > stockAmount) {
-      toast.error('Ordered quantity out of stock.');
+      console.log('Ordered quantity out of stock.');
       return;
     }
   
@@ -48,17 +48,21 @@ function* addToCart(action) {
 }
 
 function* updateAmount({ id, amount }) {
-  if (amount <= 0) return;
-
-  const stock = yield call(api.get, `/stock/${id}`);
-  const stockAmount = stock.data.amount;
-
-  if (amount > stockAmount) {
-    toast.error('Ordered quantity out of stock.');
-    return;
+  try {
+    if (amount <= 0) return;
+  
+    const stock = yield call(api.get, `/stock/${id}`);
+    const stockAmount = stock.data.amount;
+  
+    if (amount > stockAmount) {
+      console.log('Ordered quantity out of stock.');
+      return;
+    }
+  
+    yield put(updateAmountSuccess(id, amount));
+  } catch (err) {
+    yield put(updateAmountRejected(err.message))
   }
-
-  yield put(updateAmountSuccess(id, amount));
 }
 
 export default all([

@@ -59,6 +59,14 @@ export const ProductList = styled.div`
         color: #333;
         margin-top: 5px;
       }
+
+      > h6 {
+        font-size: 12px;
+        line-height: 12px;
+        color: #333;
+        margin-top: 5px;
+        text-align: right;
+      }
   
       > span {
         font-size: 21px;

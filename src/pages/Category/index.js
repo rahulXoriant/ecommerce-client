@@ -40,7 +40,6 @@ const Category = () => {
   const handleFilterChange = (type) => {
     switch(type) {
       case 'COD':
-        console.log(filters.hasOwnProperty('isCashOnDeliveryAvailable'))
         if (filters.hasOwnProperty('isCashOnDeliveryAvailable')) {
           setFilters(prev => Object.keys(prev)
             .filter(key => key !== "isCashOnDeliveryAvailable")
@@ -64,8 +63,6 @@ const Category = () => {
   const handleAddProduct = (id) => {
     dispatch(CartActions.addToCartPending(id));
   }
-
-  console.log(filters)
 
   return (
     <ProductContainer>
@@ -107,6 +104,10 @@ const Category = () => {
                 </Typography>
                 <Typography variant="p" component="span">
                   {product.priceFormatted}
+                </Typography>
+                <br />
+                <Typography variant="h6">
+                  COD Available: {product.isCashOnDeliveryAvailable ? 'Yes' : 'No'}
                 </Typography>
               </CardContent>
               <CardActions>

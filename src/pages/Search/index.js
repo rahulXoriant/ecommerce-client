@@ -17,7 +17,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loader from "../../components/Loader";
-import { useDebounce } from "../../hooks/useDebouncer";
+import { useDebounce } from "../../hooks";
 import * as CartActions from "../../store/modules/actions/cart.actions";
 import * as ProductActions from "../../store/modules/actions/product.actions";
 import { ProductContainer, ProductList } from "./styles";
@@ -33,23 +33,23 @@ const Category = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
 
-  const debouncedFilter = useDebounce(filters, 500);
+  // const filters = useDebounce(filters, 500);
 
   useEffect(() => {
     const loadProducts = async () => {
       const productFilter = {};
-      Object.keys(debouncedFilter).forEach(
-        (filter) => (productFilter[filter] = debouncedFilter[filter])
+      Object.keys(filters).forEach(
+        (filter) => (productFilter[filter] = filters[filter])
       );
       dispatch(ProductActions.getProductsPending(productFilter));
     };
     loadProducts();
-  }, [debouncedFilter]);
+  }, [filters]);
 
-  const handleFilterChange = (type) => {
+  const handleFilterChange = useDebounce((type) => {
     switch (type) {
     case "COD":
-      if (Object.prototype.hasOwnProperty.call(debouncedFilter, "isCashOnDeliveryAvailable")) {
+      if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
         setFilters((prev) =>
           Object.keys(prev)
             .filter((key) => key !== "isCashOnDeliveryAvailable")
@@ -68,18 +68,16 @@ const Category = () => {
     default:
       break;
     }
-  };
+  }, 100, [filters]);
 
-  const handleSearch = (value) => {
+  const handleSearch = useDebounce((value) => {
     if (!isEmpty(value.trim())) {
-      console.log("have search key work");
       setFilters((prev) => ({
         ...prev,
         q: value.trim().toLowerCase(),
         qFields: "title,category"
       }));
     } else {
-      console.log("donto have search key work");
       setFilters((prev) =>
         Object.keys(prev)
           .filter((key) => !["q", "qFields"].includes(key))
@@ -89,7 +87,7 @@ const Category = () => {
           }, {})
       );
     }
-  };
+  }, 500, [filters]);
 
   const handleAddProduct = (id) => {
     dispatch(CartActions.addToCartPending(id));
@@ -134,7 +132,7 @@ const Category = () => {
           <FormControlLabel
             control={
               <Checkbox
-                checked={!!debouncedFilter.isCashOnDeliveryAvailable}
+                checked={!!filters.isCashOnDeliveryAvailable}
                 onChange={() => handleFilterChange("COD")}
                 inputProps={{ "aria-label": "controlled" }}
                 sx={{ padding: 0 }}

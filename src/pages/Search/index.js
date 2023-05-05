@@ -108,7 +108,7 @@ const Category = () => {
   return (
     <ProductContainer>
       <Card className="filters" component="div">
-        <CardContent sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <CardContent>
           <FormControlLabel
             sx={{ flexGrow: 1 }}
             control={
@@ -135,7 +135,7 @@ const Category = () => {
                 checked={!!filters.isCashOnDeliveryAvailable}
                 onChange={() => handleFilterChange("COD")}
                 inputProps={{ "aria-label": "controlled" }}
-                sx={{ padding: 0 }}
+                sx={{ padding: 0, marginLeft: "auto" }}
               />
             }
             label="COD Available"

@@ -5,10 +5,11 @@ export const CategoryList = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 100px;
 
   > div.no-category-container {
     width: 100%;
-    height: calc(100vh - 140px);
+    height: calc(100vh - 150px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,10 +27,14 @@ export const CategoryList = styled.div`
     border-radius: 4px;
     padding: 20px;
     text-decoration: none;
+    @media (max-width: 768px) {
+      width: calc(50% - 11px);
+    }
 
     img {
       align-self: center;
-      max-width: 200px;
+      width: 100%;
+      height: auto;
     }
 
     h5 {

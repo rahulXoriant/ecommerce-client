@@ -4,7 +4,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { Container, ProductTable, Total } from './styles';
+import { Container, CartContainer, Total } from './styles';
 import * as CartActions from '../../store/modules/actions/cart.actions';
 import { formatPrice } from '../../utils/format';
 import { isEmpty } from 'lodash';
@@ -35,6 +35,10 @@ const Checkout = () => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount - 1));
   }
 
+  const removeFromCart = (product) => {
+    dispatch(CartActions.removeFromCart(product.id))
+  }
+
   return (
     <Container>
       {isEmpty(cart) ? (
@@ -45,65 +49,59 @@ const Checkout = () => {
         </Box>
       ) : (
         <>
-          <ProductTable>
-            <thead>
-              <tr>
-                <th />
-                <th>Products</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th />
-              </tr>
-            </thead>
-
-            <tbody>
+          <CartContainer>
+            <div>
+              <h2>My Cart</h2>
+            </div>
+            <div className='product-details'>
               {cart.map(product => (
-                <tr>
-                  <td>
-                    <img src={product.image} alt={product.title} />
-                  </td>
-                  <td>
-                    <strong>{product.title}</strong>
-                    <span>{product.priceFormatted}</span>
-                  </td>
-                  <td>
+                <div key={product.id} className='product'>
+                  <div className='product-detail'>
                     <div>
-                      <button type="button">
-                        <RemoveCircleOutlineIcon
-                          size={20}
-                          color="rgb(241, 148, 32)"
-                          onClick={() => decrement(product)}
-                        />
-                      </button>
-                      <input type="number" readOnly value={product.amount} />
-                      <button type="button">
-                        <AddCircleOutlineIcon
-                          size={20}
-                          color="rgb(241, 148, 32)"
-                          onClick={() => increment(product)}
-                        />
-                      </button>
+                      <img src={product.image} alt={product.title} />
                     </div>
-                  </td>
-                  <td>
-                    <strong>{product.subtotal}</strong>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        dispatch(CartActions.removeFromCart(product.id))
-                      }
-                    >
-                      <DeleteIcon size={20} color="#7159c1" />
-                    </button>
-                  </td>
-                </tr>
+                    <div className='product-info'>
+                      <div className='product-name'>
+                        <h4>{product.title}</h4>
+                        <span>{product.priceFormatted}</span>
+                      </div>
+                      <div className='product-actions'>
+                        <button type="button">
+                          <RemoveCircleOutlineIcon
+                            style={{ fontSize: 24, color: product.amount > 1 ? "#000" : "#888" }}
+                            onClick={() => decrement(product)}
+                          />
+                        </button>
+                        <input type="number" readOnly value={product.amount} />
+                        <button type="button">
+                          <AddCircleOutlineIcon
+                            style={{ fontSize: 24, color: "#000" }}
+                            onClick={() => increment(product)}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => removeFromCart(product)}
+                        >
+                          <DeleteIcon size={20} color="#7159c1" />
+                        </button>
+                      </div>
+                      <div className='product-subtotal-small-device'>
+                        <div>
+                          <h3>{product.subtotal}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='product-subtotal-large-device'>
+                    <h3>{product.subtotal}</h3>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </ProductTable>
+            </div>
+          </CartContainer>
           <footer>
-            <button type="button">Finalize Order</button>
+            <button type="button">Place Order</button>
 
             <Total>
               <span>TOTAL</span>

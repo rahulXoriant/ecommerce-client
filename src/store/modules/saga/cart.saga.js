@@ -10,6 +10,7 @@ import {
   updateAmountSuccess, 
   updateAmountRejected
 } from '../actions/cart.actions';
+import { toast } from 'react-toastify';
 
 function* addToCart(action) {
   try {
@@ -25,7 +26,9 @@ function* addToCart(action) {
     const amount = currentAmount + 1;
   
     if (amount > stockAmount) {
-      console.log('Ordered quantity out of stock.');
+      toast.warning('Ordered quantity out of stock.', {
+        position: 'top-right'
+      });
       return;
     }
   
@@ -55,7 +58,9 @@ function* updateAmount({ id, amount }) {
     const stockAmount = stock.data.amount;
   
     if (amount > stockAmount) {
-      console.log('Ordered quantity out of stock.');
+      toast.warning('Ordered quantity out of stock.', {
+        position: 'top-right'
+      });
       return;
     }
   

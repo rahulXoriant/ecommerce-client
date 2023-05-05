@@ -1,4 +1,3 @@
-import produce from 'immer';
 import { GET_PRODUCTS_REJECTED, GET_PRODUCTS_SUCCESS } from '../actions/product.actions';
 
 const category = (state = { value: null, loading: true }, action) => {

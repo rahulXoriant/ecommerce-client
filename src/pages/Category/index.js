@@ -6,6 +6,9 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 
@@ -64,6 +67,18 @@ const Category = () => {
     dispatch(CartActions.addToCartPending(id));
   }
 
+  const increment = (product_id, present_amount) => {
+    dispatch(CartActions.updateAmountPending(product_id, present_amount + 1));
+  }
+
+  const decrement = (product_id, present_amount) => {
+    dispatch(CartActions.updateAmountPending(product_id, present_amount - 1));
+  }
+
+  const removeFromCart = (product) => {
+    dispatch(CartActions.removeFromCart(product.id))
+  }
+
   return (
     <ProductContainer>
       {products.loading ? (
@@ -111,14 +126,40 @@ const Category = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <button type="button" onClick={() => handleAddProduct(product.id)}>
-                  <div>
-                    <AddShoppingCartIcon size={16} color="#fff" />
-                    {amount[product.id] || 0}
+                {!!amount[product.id] ? ( 
+                  <div className='cart-actions'>
+                    <div className='cart-manupulation'>
+                      <div className='cart-action-button'>
+                        <RemoveCircleOutlineIcon
+                          style={{ fontSize: 36, color: amount[product.id] > 1 ? "#000" : "#888" }}
+                          onClick={() => decrement(product.id, amount[product.id])}
+                        />
+                      </div>
+                      <div>
+                        <input type="number" readOnly value={amount[product.id]} />
+                      </div>
+                      <div className='cart-action-button'>
+                        <AddCircleOutlineIcon
+                          style={{ fontSize: 36, color: "#000" }}
+                          onClick={() => increment(product.id, amount[product.id])}
+                        />
+                      </div>
+                    </div>
+                    <div className='cart-action-button'>
+                      <DeleteIcon 
+                        style={{ fontSize: 36 }}
+                        onClick={() => removeFromCart(product)}
+                      />
+                    </div>
                   </div>
-
-                  <span>Add to Cart</span>
-                </button>
+                ) : (
+                  <button type="button" onClick={() => handleAddProduct(product.id)}>
+                    <div>
+                      <AddShoppingCartIcon size={16} color="#fff" />
+                    </div>
+                    <span>Add to Cart</span>
+                  </button>
+                )}
               </CardActions>
             </Card>
           ))}

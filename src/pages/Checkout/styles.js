@@ -4,6 +4,11 @@ export const Container = styled.div`
   padding: 30px;
   background: #fff;
   border-radius: 4px;
+  margin-top: 100px;
+
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
 
   > div.no-product-cart-container {
     width: 100%;
@@ -37,22 +42,15 @@ export const Container = styled.div`
   }
 `;
 
-export const ProductTable = styled.table`
+export const CartContainer = styled.div`
   width: 100%;
 
-  thead th {
-    color: #999;
-    text-align: left;
-    padding: 12px;
-  }
-
-  tbody td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
+  h2 {
+    margin-bottom: 30px;
   }
 
   img {
-    height: 100px;
+    height: 164px;
   }
 
   strong {
@@ -63,13 +61,73 @@ export const ProductTable = styled.table`
   span {
     display: block;
     margin-top: 5px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: medium;
   }
 
-  div {
+  div.product-details {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 30px;
+
+    div.product {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+      div.product-detail {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: start;
+        width: 100%;
+        gap: 10px;
+
+        div.product-info {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          justify-content: start;
+          gap: 14px;
+
+          div.product-name {
+            padding: 0 6px;
+
+            h4 {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
+          }
+        }
+
+
+        div.product-actions {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        div.product-subtotal-small-device {
+          display: none;
+
+          @media (max-width: 480px) {
+            display: block;
+          }
+        }
+      }
+
+      div.product-subtotal-large-device {
+        display: block;
+
+        @media (max-width: 480px) {
+          display: none;
+        }
+      }
+    }
 
     input {
       border: 1px solid #ddd;

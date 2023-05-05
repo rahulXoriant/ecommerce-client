@@ -14,13 +14,19 @@ const Header = () => {
         <img src={logo} alt="logo" width={120} />
       </Link>
 
-      <Cart to="/checkout">
-        <div>
-          <strong>Checkout</strong>
-          <span>{cartSize} {cartSize > 1 ? 'items' : 'item'}</span>
-        </div>
-        <ShoppingCartCheckoutIcon size={60} color="warning" />
-      </Cart>
+      <div className='link-container'>
+        <Link to="/search" className='link'>
+          <strong>Search</strong>
+        </Link>
+        <Cart to="/checkout">
+          <div>
+            <strong>Checkout</strong>
+            <span>{cartSize} {cartSize > 1 ? 'items' : 'item'}</span>
+          </div>
+          <ShoppingCartCheckoutIcon size={60} color="warning" />
+        </Cart>
+      </div>
+
     </Container>
   );
 }

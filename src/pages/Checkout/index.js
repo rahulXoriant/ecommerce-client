@@ -4,7 +4,7 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { Box } from "@mui/material";
 import { isEmpty } from "lodash";
 import React from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as CartActions from "../../store/modules/actions/cart.actions";
 import { formatPrice } from "../../utils/format";

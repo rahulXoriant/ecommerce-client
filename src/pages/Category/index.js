@@ -10,8 +10,8 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import { isEmpty } from "lodash";
-import React, { useEffect,useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Loader from "../../components/Loader";

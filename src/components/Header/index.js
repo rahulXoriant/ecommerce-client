@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { Cart,Container } from "./styles";
+import { Cart, Container } from "./styles";
 
 const Header = () => {
   const cartSize = useSelector((state) => state.cart.length);

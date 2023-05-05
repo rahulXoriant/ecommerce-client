@@ -4,7 +4,8 @@ import api from "../../../services/api";
 import {
   GET_CATEGORIES_PENDING,
   getCategoriesRejected,
-  getCategoriesSuccess} from "../actions/category.actions";
+  getCategoriesSuccess
+} from "../actions/category.actions";
 
 function* getCategories() {
   try {

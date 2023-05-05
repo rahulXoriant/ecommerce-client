@@ -9,7 +9,8 @@ import {
   addToCartSuccess,
   UPDATE_CART_AMOUNT_PENDING,
   updateAmountRejected,
-  updateAmountSuccess} from "../actions/cart.actions";
+  updateAmountSuccess
+} from "../actions/cart.actions";
 
 function* addToCart(action) {
   try {

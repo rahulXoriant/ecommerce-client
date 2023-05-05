@@ -33,7 +33,9 @@
     "server": "npx json-server db.json --watch --port 8000",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc",
+    "lint-staged": "lint-staged --config lint-staged.js",
+    "husky-install": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +65,9 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "prettier": "^2.8.8"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "tsc-files": "^1.1.3"
   }
 }

@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useSelector, useDispatch } from 'react-redux';
-import SearchIcon from '@mui/icons-material/Search';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import SearchIcon from "@mui/icons-material/Search";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { isEmpty } from "lodash";
+import React, { useEffect,useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
 
-import { ProductContainer, ProductList } from './styles';
-import * as CartActions from '../../store/modules/actions/cart.actions';
-import * as ProductActions from '../../store/modules/actions/product.actions';
-import Loader from '../../components/Loader';
-import { isEmpty } from 'lodash';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useDebounce } from '../../hooks/useDebouncer';
-import { InputAdornment } from '@mui/material';
+import Loader from "../../components/Loader";
+import { useDebounce } from "../../hooks/useDebouncer";
+import * as CartActions from "../../store/modules/actions/cart.actions";
+import * as ProductActions from "../../store/modules/actions/product.actions";
+import { ProductContainer, ProductList } from "./styles";
 
 const Category = () => {
   const [filters, setFilters] = useState({});
@@ -48,41 +48,41 @@ const Category = () => {
 
   const handleFilterChange = (type) => {
     switch (type) {
-      case 'COD':
-        if (Object.prototype.hasOwnProperty.call(debouncedFilter, 'isCashOnDeliveryAvailable')) {
-          setFilters((prev) =>
-            Object.keys(prev)
-              .filter((key) => key !== 'isCashOnDeliveryAvailable')
-              .reduce((acc, key) => {
-                acc[key] = prev[key];
-                return acc;
-              }, {})
-          );
-        } else {
-          setFilters((prev) => ({
-            ...prev,
-            isCashOnDeliveryAvailable: true
-          }));
-        }
-        break;
-      default:
-        break;
+    case "COD":
+      if (Object.prototype.hasOwnProperty.call(debouncedFilter, "isCashOnDeliveryAvailable")) {
+        setFilters((prev) =>
+          Object.keys(prev)
+            .filter((key) => key !== "isCashOnDeliveryAvailable")
+            .reduce((acc, key) => {
+              acc[key] = prev[key];
+              return acc;
+            }, {})
+        );
+      } else {
+        setFilters((prev) => ({
+          ...prev,
+          isCashOnDeliveryAvailable: true
+        }));
+      }
+      break;
+    default:
+      break;
     }
   };
 
   const handleSearch = (value) => {
     if (!isEmpty(value.trim())) {
-      console.log('have search key work');
+      console.log("have search key work");
       setFilters((prev) => ({
         ...prev,
         q: value.trim().toLowerCase(),
-        qFields: 'title,category'
+        qFields: "title,category"
       }));
     } else {
-      console.log('donto have search key work');
+      console.log("donto have search key work");
       setFilters((prev) =>
         Object.keys(prev)
-          .filter((key) => !['q', 'qFields'].includes(key))
+          .filter((key) => !["q", "qFields"].includes(key))
           .reduce((acc, key) => {
             acc[key] = prev[key];
             return acc;
@@ -110,7 +110,7 @@ const Category = () => {
   return (
     <ProductContainer>
       <Card className="filters" component="div">
-        <CardContent sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <CardContent sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
           <FormControlLabel
             sx={{ flexGrow: 1 }}
             control={
@@ -120,7 +120,7 @@ const Category = () => {
                 placeholder="Search Products"
                 onChange={(e) => handleSearch(e.target.value)}
                 type="search"
-                sx={{ width: '100%', marginLeft: '20px' }}
+                sx={{ width: "100%", marginLeft: "20px" }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -135,8 +135,8 @@ const Category = () => {
             control={
               <Checkbox
                 checked={!!debouncedFilter.isCashOnDeliveryAvailable}
-                onChange={() => handleFilterChange('COD')}
-                inputProps={{ 'aria-label': 'controlled' }}
+                onChange={() => handleFilterChange("COD")}
+                inputProps={{ "aria-label": "controlled" }}
                 sx={{ padding: 0 }}
               />
             }
@@ -164,7 +164,7 @@ const Category = () => {
                 </Typography>
                 <br />
                 <Typography variant="h6">
-                  COD Available: {product.isCashOnDeliveryAvailable ? 'Yes' : 'No'}
+                  COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
                 </Typography>
               </CardContent>
               <CardActions>
@@ -173,7 +173,7 @@ const Category = () => {
                     <div className="cart-manupulation">
                       <div className="cart-action-button">
                         <RemoveCircleOutlineIcon
-                          style={{ fontSize: 36, color: amount[product.id] > 1 ? '#000' : '#888' }}
+                          style={{ fontSize: 36, color: amount[product.id] > 1 ? "#000" : "#888" }}
                           onClick={() => decrement(product.id, amount[product.id])}
                         />
                       </div>
@@ -182,7 +182,7 @@ const Category = () => {
                       </div>
                       <div className="cart-action-button">
                         <AddCircleOutlineIcon
-                          style={{ fontSize: 36, color: '#000' }}
+                          style={{ fontSize: 36, color: "#000" }}
                           onClick={() => increment(product.id, amount[product.id])}
                         />
                       </div>

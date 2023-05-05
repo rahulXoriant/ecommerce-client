@@ -1,14 +1,14 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { Box } from "@mui/material";
+import { isEmpty } from "lodash";
+import React from "react";
+import { useDispatch,useSelector } from "react-redux";
 
-import { Container, CartContainer, Total } from './styles';
-import * as CartActions from '../../store/modules/actions/cart.actions';
-import { formatPrice } from '../../utils/format';
-import { isEmpty } from 'lodash';
-import { Box } from '@mui/material';
+import * as CartActions from "../../store/modules/actions/cart.actions";
+import { formatPrice } from "../../utils/format";
+import { CartContainer, Container, Total } from "./styles";
 
 const Checkout = () => {
   const cart = useSelector((state) =>
@@ -66,14 +66,14 @@ const Checkout = () => {
                       <div className="product-actions">
                         <button type="button">
                           <RemoveCircleOutlineIcon
-                            style={{ fontSize: 24, color: product.amount > 1 ? '#000' : '#888' }}
+                            style={{ fontSize: 24, color: product.amount > 1 ? "#000" : "#888" }}
                             onClick={() => decrement(product)}
                           />
                         </button>
                         <input type="number" readOnly value={product.amount} />
                         <button type="button">
                           <AddCircleOutlineIcon
-                            style={{ fontSize: 24, color: '#000' }}
+                            style={{ fontSize: 24, color: "#000" }}
                             onClick={() => increment(product)}
                           />
                         </button>

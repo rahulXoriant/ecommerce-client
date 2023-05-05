@@ -1,7 +1,7 @@
 // add to cart actions
-export const GET_PRODUCTS_PENDING = 'GET_PRODUCTS_PENDING';
-export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
-export const GET_PRODUCTS_REJECTED = 'GET_PRODUCTS_REJECTED';
+export const GET_PRODUCTS_PENDING = "GET_PRODUCTS_PENDING";
+export const GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS";
+export const GET_PRODUCTS_REJECTED = "GET_PRODUCTS_REJECTED";
 
 export const getProductsPending = (filter) => {
   return {

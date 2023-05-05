@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { isEmpty } from "lodash";
+import React, { useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { CategoryList } from './styles';
-import { getCategoryLogo } from '../../utils/image';
-import * as CategortActions from '../../store/modules/actions/category.actions';
-import Loader from '../../components/Loader';
-import { isEmpty } from 'lodash';
+import Loader from "../../components/Loader";
+import * as CategortActions from "../../store/modules/actions/category.actions";
+import { getCategoryLogo } from "../../utils/image";
+import { CategoryList } from "./styles";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const Home = () => {
         categories.value.map((category) => (
           <Card
             key={String(category.id)}
-            sx={{ width: '100%' }}
+            sx={{ width: "100%" }}
             component={Link}
             to={`/category/${category.slug}`}
           >

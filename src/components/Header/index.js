@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import { useSelector } from 'react-redux';
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { Container, Cart } from './styles';
-import logo from '../../assets/images/logo.png';
+import logo from "../../assets/images/logo.png";
+import { Cart,Container } from "./styles";
 
 const Header = () => {
   const cartSize = useSelector((state) => state.cart.length);
@@ -22,7 +22,7 @@ const Header = () => {
           <div>
             <strong>Checkout</strong>
             <span>
-              {cartSize} {cartSize > 1 ? 'items' : 'item'}
+              {cartSize} {cartSize > 1 ? "items" : "item"}
             </span>
           </div>
           <ShoppingCartCheckoutIcon size={60} color="warning" />

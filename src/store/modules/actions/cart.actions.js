@@ -1,7 +1,7 @@
 // add to cart actions
-export const ADD_TO_CART_PENDING = 'ADD_TO_CART_PENDING';
-export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
-export const ADD_TO_CART_REJECTED = 'ADD_TO_CART_REJECTED';
+export const ADD_TO_CART_PENDING = "ADD_TO_CART_PENDING";
+export const ADD_TO_CART_SUCCESS = "ADD_TO_CART_SUCCESS";
+export const ADD_TO_CART_REJECTED = "ADD_TO_CART_REJECTED";
 
 export const addToCartPending = (id) => {
   return {
@@ -24,16 +24,16 @@ export const addToCartRejected = (message) => {
   };
 };
 
-export const CART_REMOVE = 'CART_REMOVE';
+export const CART_REMOVE = "CART_REMOVE";
 
 export const removeFromCart = (id) => {
   return { type: CART_REMOVE, id };
 };
 
 // update to cart actions
-export const UPDATE_CART_AMOUNT_PENDING = 'UPDATE_CART_AMOUNT_PENDING';
-export const UPDATE_CART_AMOUNT_SUCCESS = 'UPDATE_CART_AMOUNT_SUCCESS';
-export const UPDATE_CART_AMOUNT_REJECTED = 'UPDATE_CART_AMOUNT_REJECTED';
+export const UPDATE_CART_AMOUNT_PENDING = "UPDATE_CART_AMOUNT_PENDING";
+export const UPDATE_CART_AMOUNT_SUCCESS = "UPDATE_CART_AMOUNT_SUCCESS";
+export const UPDATE_CART_AMOUNT_REJECTED = "UPDATE_CART_AMOUNT_REJECTED";
 
 export const updateAmountPending = (id, amount) => {
   return { type: UPDATE_CART_AMOUNT_PENDING, id, amount };

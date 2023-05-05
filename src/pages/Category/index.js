@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { Box } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Typography from "@mui/material/Typography";
+import { isEmpty } from "lodash";
+import React, { useEffect,useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { ProductContainer, ProductList } from './styles';
-import * as CartActions from '../../store/modules/actions/cart.actions';
-import * as ProductActions from '../../store/modules/actions/product.actions';
-import Loader from '../../components/Loader';
-import { isEmpty } from 'lodash';
-import { Box } from '@mui/material';
+import Loader from "../../components/Loader";
+import * as CartActions from "../../store/modules/actions/cart.actions";
+import * as ProductActions from "../../store/modules/actions/product.actions";
+import { ProductContainer, ProductList } from "./styles";
 
 const Category = () => {
   const [filters, setFilters] = useState({});
@@ -42,25 +42,25 @@ const Category = () => {
 
   const handleFilterChange = (type) => {
     switch (type) {
-      case 'COD':
-        if (Object.prototype.hasOwnProperty.call(filters, 'isCashOnDeliveryAvailable')) {
-          setFilters((prev) =>
-            Object.keys(prev)
-              .filter((key) => key !== 'isCashOnDeliveryAvailable')
-              .reduce((acc, key) => {
-                acc[key] = prev[key];
-                return acc;
-              }, {})
-          );
-        } else {
-          setFilters((prev) => ({
-            ...prev,
-            isCashOnDeliveryAvailable: true
-          }));
-        }
-        break;
-      default:
-        break;
+    case "COD":
+      if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
+        setFilters((prev) =>
+          Object.keys(prev)
+            .filter((key) => key !== "isCashOnDeliveryAvailable")
+            .reduce((acc, key) => {
+              acc[key] = prev[key];
+              return acc;
+            }, {})
+        );
+      } else {
+        setFilters((prev) => ({
+          ...prev,
+          isCashOnDeliveryAvailable: true
+        }));
+      }
+      break;
+    default:
+      break;
     }
   };
 
@@ -97,8 +97,8 @@ const Category = () => {
                 control={
                   <Checkbox
                     checked={!!filters.isCashOnDeliveryAvailable}
-                    onChange={() => handleFilterChange('COD')}
-                    inputProps={{ 'aria-label': 'controlled' }}
+                    onChange={() => handleFilterChange("COD")}
+                    inputProps={{ "aria-label": "controlled" }}
                     sx={{ padding: 0 }}
                   />
                 }
@@ -119,7 +119,7 @@ const Category = () => {
                   </Typography>
                   <br />
                   <Typography variant="h6">
-                    COD Available: {product.isCashOnDeliveryAvailable ? 'Yes' : 'No'}
+                    COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -130,7 +130,7 @@ const Category = () => {
                           <RemoveCircleOutlineIcon
                             style={{
                               fontSize: 36,
-                              color: amount[product.id] > 1 ? '#000' : '#888'
+                              color: amount[product.id] > 1 ? "#000" : "#888"
                             }}
                             onClick={() => decrement(product.id, amount[product.id])}
                           />
@@ -140,7 +140,7 @@ const Category = () => {
                         </div>
                         <div className="cart-action-button">
                           <AddCircleOutlineIcon
-                            style={{ fontSize: 36, color: '#000' }}
+                            style={{ fontSize: 36, color: "#000" }}
                             onClick={() => increment(product.id, amount[product.id])}
                           />
                         </div>

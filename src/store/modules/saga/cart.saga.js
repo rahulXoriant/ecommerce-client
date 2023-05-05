@@ -1,16 +1,15 @@
-import { call, select, put, all, takeLatest } from 'redux-saga/effects';
+import { toast } from "react-toastify";
+import { all, call, put, select, takeLatest } from "redux-saga/effects";
 
-import api from '../../../services/api';
-import { formatPrice } from '../../../utils/format';
+import api from "../../../services/api";
+import { formatPrice } from "../../../utils/format";
 import {
   ADD_TO_CART_PENDING,
-  UPDATE_CART_AMOUNT_PENDING,
-  addToCartSuccess,
   addToCartRejected,
-  updateAmountSuccess,
-  updateAmountRejected
-} from '../actions/cart.actions';
-import { toast } from 'react-toastify';
+  addToCartSuccess,
+  UPDATE_CART_AMOUNT_PENDING,
+  updateAmountRejected,
+  updateAmountSuccess} from "../actions/cart.actions";
 
 function* addToCart(action) {
   try {
@@ -24,8 +23,8 @@ function* addToCart(action) {
     const amount = currentAmount + 1;
 
     if (amount > stockAmount) {
-      toast.warning('Ordered quantity out of stock.', {
-        position: 'top-right'
+      toast.warning("Ordered quantity out of stock.", {
+        position: "top-right"
       });
       return;
     }
@@ -55,8 +54,8 @@ function* updateAmount({ id, amount }) {
     const stockAmount = stock.data.amount;
 
     if (amount > stockAmount) {
-      toast.warning('Ordered quantity out of stock.', {
-        position: 'top-right'
+      toast.warning("Ordered quantity out of stock.", {
+        position: "top-right"
       });
       return;
     }

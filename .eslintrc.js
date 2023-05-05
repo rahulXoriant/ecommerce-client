@@ -19,13 +19,14 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: ["react", "import", "jsx-a11y"],
+  plugins: ["react", "import", "jsx-a11y", "simple-import-sort"],
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
     "indent": ["error", 2],
     "linebreak-style": 1,
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "simple-import-sort/imports": "error"
   },
   settings: {
     react: {

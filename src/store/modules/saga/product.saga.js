@@ -1,11 +1,11 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import api from '../../../services/api';
+import { all, call, put, takeLatest } from "redux-saga/effects";
+
+import api from "../../../services/api";
+import { formatPrice,jsonToQueryString } from "../../../utils/format";
 import {
   GET_PRODUCTS_PENDING,
-  getProductsSuccess,
-  getProductsRejected
-} from '../actions/product.actions';
-import { jsonToQueryString, formatPrice } from '../../../utils/format';
+  getProductsRejected,
+  getProductsSuccess} from "../actions/product.actions";
 
 function* getProducts(action) {
   try {

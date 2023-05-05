@@ -14,12 +14,12 @@ import { isEmpty } from 'lodash';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.category);
+  const categories = useSelector((state) => state.category);
 
   useEffect(() => {
     const loadCategories = async () => {
       dispatch(CategortActions.getCategoriesPending());
-    }
+    };
     loadCategories();
   }, []);
 
@@ -29,22 +29,27 @@ const Home = () => {
         <Loader />
       ) : isEmpty(categories.value) ? (
         <Box className="no-category-container">
-          <Box>
-            No Category Available
-          </Box>
+          <Box>No Category Available</Box>
         </Box>
-      ) : categories.value.map(category => (
-        <Card key={String(category.id)} sx={{ width: '100%' }} component={Link} to={`/category/${category.slug}`}>
-          <CardContent>
-            <img src={getCategoryLogo(category.name)} alt={category.name} />
-            <Typography variant="h5" component="h5">
-              {category.name}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+      ) : (
+        categories.value.map((category) => (
+          <Card
+            key={String(category.id)}
+            sx={{ width: '100%' }}
+            component={Link}
+            to={`/category/${category.slug}`}
+          >
+            <CardContent>
+              <img src={getCategoryLogo(category.name)} alt={category.name} />
+              <Typography variant="h5" component="h5">
+                {category.name}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))
+      )}
     </CategoryList>
   );
-}
+};
 
 export default Home;

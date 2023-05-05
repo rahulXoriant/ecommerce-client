@@ -11,13 +11,13 @@ import { isEmpty } from 'lodash';
 import { Box } from '@mui/material';
 
 const Checkout = () => {
-  const cart = useSelector(state =>
-    state.cart.map(product => ({
+  const cart = useSelector((state) =>
+    state.cart.map((product) => ({
       ...product,
-      subtotal: formatPrice(product.price * product.amount),
+      subtotal: formatPrice(product.price * product.amount)
     }))
   );
-  const total = useSelector(state =>
+  const total = useSelector((state) =>
     formatPrice(
       state.cart.reduce((totalSum, product) => {
         return totalSum + product.price * product.amount;
@@ -29,23 +29,21 @@ const Checkout = () => {
 
   const increment = (product) => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount + 1));
-  }
+  };
 
   const decrement = (product) => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount - 1));
-  }
+  };
 
   const removeFromCart = (product) => {
-    dispatch(CartActions.removeFromCart(product.id))
-  }
+    dispatch(CartActions.removeFromCart(product.id));
+  };
 
   return (
     <Container>
       {isEmpty(cart) ? (
         <Box className="no-product-cart-container">
-          <Box>
-            No Products in Cart
-          </Box>
+          <Box>No Products in Cart</Box>
         </Box>
       ) : (
         <>
@@ -53,47 +51,44 @@ const Checkout = () => {
             <div>
               <h2>My Cart</h2>
             </div>
-            <div className='product-details'>
-              {cart.map(product => (
-                <div key={product.id} className='product'>
-                  <div className='product-detail'>
+            <div className="product-details">
+              {cart.map((product) => (
+                <div key={product.id} className="product">
+                  <div className="product-detail">
                     <div>
                       <img src={product.image} alt={product.title} />
                     </div>
-                    <div className='product-info'>
-                      <div className='product-name'>
+                    <div className="product-info">
+                      <div className="product-name">
                         <h4>{product.title}</h4>
                         <span>{product.priceFormatted}</span>
                       </div>
-                      <div className='product-actions'>
+                      <div className="product-actions">
                         <button type="button">
                           <RemoveCircleOutlineIcon
-                            style={{ fontSize: 24, color: product.amount > 1 ? "#000" : "#888" }}
+                            style={{ fontSize: 24, color: product.amount > 1 ? '#000' : '#888' }}
                             onClick={() => decrement(product)}
                           />
                         </button>
                         <input type="number" readOnly value={product.amount} />
                         <button type="button">
                           <AddCircleOutlineIcon
-                            style={{ fontSize: 24, color: "#000" }}
+                            style={{ fontSize: 24, color: '#000' }}
                             onClick={() => increment(product)}
                           />
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => removeFromCart(product)}
-                        >
+                        <button type="button" onClick={() => removeFromCart(product)}>
                           <DeleteIcon size={20} color="#7159c1" />
                         </button>
                       </div>
-                      <div className='product-subtotal-small-device'>
+                      <div className="product-subtotal-small-device">
                         <div>
                           <h3>{product.subtotal}</h3>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className='product-subtotal-large-device'>
+                  <div className="product-subtotal-large-device">
                     <h3>{product.subtotal}</h3>
                   </div>
                 </div>
@@ -112,6 +107,6 @@ const Checkout = () => {
       )}
     </Container>
   );
-}
+};
 
 export default Checkout;

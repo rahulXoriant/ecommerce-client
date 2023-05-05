@@ -8,19 +8,18 @@ export const getCategoriesPending = () => {
     type: GET_CATEGORIES_PENDING,
     payload: { value: null, loading: false }
   };
-}
+};
 
 export const getCategoriesSuccess = (categories) => {
   return {
     type: GET_CATEGORIES_SUCCESS,
-    payload: { value: categories, loading: false },
+    payload: { value: categories, loading: false }
   };
-}
+};
 
 export const getCategoriesRejected = (message) => {
   return {
     type: GET_CATEGORIES_REJECTED,
-    payload: { value: null, message: message, loading: false },
+    payload: { value: null, message: message, loading: false }
   };
-}
-
+};

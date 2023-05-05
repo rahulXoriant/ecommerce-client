@@ -6,29 +6,29 @@ export const ADD_TO_CART_REJECTED = 'ADD_TO_CART_REJECTED';
 export const addToCartPending = (id) => {
   return {
     type: ADD_TO_CART_PENDING,
-    payload: { id },
+    payload: { id }
   };
-}
+};
 
 export const addToCartSuccess = (product) => {
   return {
     type: ADD_TO_CART_SUCCESS,
-    product,
+    product
   };
-}
+};
 
 export const addToCartRejected = (message) => {
   return {
     type: ADD_TO_CART_REJECTED,
-    message,
+    message
   };
-}
+};
 
 export const CART_REMOVE = 'CART_REMOVE';
 
 export const removeFromCart = (id) => {
   return { type: CART_REMOVE, id };
-}
+};
 
 // update to cart actions
 export const UPDATE_CART_AMOUNT_PENDING = 'UPDATE_CART_AMOUNT_PENDING';
@@ -37,15 +37,15 @@ export const UPDATE_CART_AMOUNT_REJECTED = 'UPDATE_CART_AMOUNT_REJECTED';
 
 export const updateAmountPending = (id, amount) => {
   return { type: UPDATE_CART_AMOUNT_PENDING, id, amount };
-}
+};
 
 export const updateAmountSuccess = (id, amount) => {
   return { type: UPDATE_CART_AMOUNT_SUCCESS, id, amount };
-}
+};
 
 export const updateAmountRejected = (message) => {
   return {
     type: UPDATE_CART_AMOUNT_REJECTED,
-    message,
+    message
   };
-}
+};

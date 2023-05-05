@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProductContainer = styled.div` 
+export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -31,7 +31,7 @@ export const ProductContainer = styled.div`
       cursor: pointer;
     }
   }
-`
+`;
 
 export const ProductList = styled.div`
   display: flex;
@@ -56,13 +56,12 @@ export const ProductList = styled.div`
     }
 
     > div {
-
       > img {
         align-self: center;
         width: 100%;
         height: auto;
       }
-  
+
       > h5 {
         font-size: 16px;
         line-height: 20px;
@@ -77,7 +76,7 @@ export const ProductList = styled.div`
         margin-top: 5px;
         text-align: right;
       }
-  
+
       > span {
         font-size: 21px;
         font-weight: bold;
@@ -101,7 +100,7 @@ export const ProductList = styled.div`
           cursor: pointer;
           height: 36px;
         }
-  
+
         div > input {
           width: 50px;
           height: 34px;
@@ -109,7 +108,6 @@ export const ProductList = styled.div`
         }
       }
 
-  
       button {
         background: rgb(241, 148, 32);
         width: 100%;
@@ -121,22 +119,22 @@ export const ProductList = styled.div`
         display: flex;
         align-items: center;
         transition: background 0.2s;
-  
+
         &:hover {
           background: rgb(200, 120, 28);
         }
-  
+
         > div {
           display: flex;
           align-items: center;
           padding: 12px;
           background: rgba(0, 0, 0, 0.1);
-  
+
           svg {
             margin-right: 5px;
           }
         }
-  
+
         span {
           flex: 1;
           font-size: 20px;
@@ -145,6 +143,5 @@ export const ProductList = styled.div`
         }
       }
     }
-
   }
 `;

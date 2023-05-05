@@ -20,6 +20,6 @@ const routes = () => {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default routes;

@@ -9,19 +9,18 @@ export const getProductsPending = (filter) => {
     filter,
     payload: { value: null, loading: false }
   };
-}
+};
 
 export const getProductsSuccess = (products) => {
   return {
     type: GET_PRODUCTS_SUCCESS,
-    payload: { value: products, loading: false },
+    payload: { value: products, loading: false }
   };
-}
+};
 
 export const getProductsRejected = (message) => {
   return {
     type: GET_PRODUCTS_REJECTED,
-    payload: { value: null, message: message, loading: false },
+    payload: { value: null, message: message, loading: false }
   };
-}
-
+};

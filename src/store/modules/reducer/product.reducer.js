@@ -15,6 +15,6 @@ const category = (state = { value: null, loading: true }, action) => {
     default:
       return state;
   }
-}
+};
 
 export default category;

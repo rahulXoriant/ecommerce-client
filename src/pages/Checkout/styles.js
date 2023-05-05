@@ -75,7 +75,7 @@ export const CartContainer = styled.div`
       width: 100%;
       display: flex;
       justify-content: space-between;
-      
+
       div.product-detail {
         display: flex;
         flex-direction: row;
@@ -103,7 +103,6 @@ export const CartContainer = styled.div`
             }
           }
         }
-
 
         div.product-actions {
           display: flex;

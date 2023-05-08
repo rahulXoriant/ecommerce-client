@@ -33,8 +33,6 @@ const Category = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product);
 
-  // const filters = useDebounce(filters, 500);
-
   useEffect(() => {
     const loadProducts = async () => {
       const productFilter = {};

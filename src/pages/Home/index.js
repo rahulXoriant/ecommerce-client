@@ -1,15 +1,11 @@
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import { isEmpty } from "lodash";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
+import CategoryCard from "../../components/Cards/CategoryCard";
 import Loader from "../../components/Loader";
 import * as CategortActions from "../../store/modules/actions/category.actions";
-import { getCategoryLogo } from "../../utils/image";
 import { CategoryList } from "./styles";
 
 const Home = () => {
@@ -33,19 +29,7 @@ const Home = () => {
         </Box>
       ) : (
         categories.value.map((category) => (
-          <Card
-            key={String(category.id)}
-            sx={{ width: "100%" }}
-            component={Link}
-            to={`/category/${category.slug}`}
-          >
-            <CardContent>
-              <img src={getCategoryLogo(category.name)} alt={category.name} />
-              <Typography variant="h5" component="h5">
-                {category.name}
-              </Typography>
-            </CardContent>
-          </Card>
+          <CategoryCard key={category.id} category={category} />
         ))
       )}
     </CategoryList>

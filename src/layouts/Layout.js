@@ -21,7 +21,6 @@ const Layout = () => {
 
   const handleWindowResize = useThrottle(
     () => {
-      // Execute some expensive operation
       setRange(sizeToRange(window.innerWidth));
     },
     1000,
@@ -36,7 +35,7 @@ const Layout = () => {
   }, [handleWindowResize]);
 
   useEffect(() => {
-    if (range) {
+    if (range && range !== "desktop") {
       toast.info(`Showing app in ${range} view.`, {
         position: "top-right"
       });
@@ -46,7 +45,6 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <div>Screen size (resize to see): {range}</div>
       <Outlet />
     </div>
   );

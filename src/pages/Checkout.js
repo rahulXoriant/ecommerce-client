@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
-import CheckoutContainer from "../../components/Containers/CheckoutContainer";
-import { formatPrice } from "../../utils/format";
+import CheckoutContainer from "../components/Containers/CheckoutContainer";
+import { formatPrice } from "../utils/format";
 
 const Checkout = () => {
   const cart = useSelector((state) =>

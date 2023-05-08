@@ -2,8 +2,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CategoryContainer from "../../components/Containers/CategoryContainer"
-import * as CategortActions from "../../store/modules/actions/category.actions";
+import CategoryContainer from "../components/Containers/CategoryContainer"
+import * as CategortActions from "../store/modules/actions/category.actions";
 
 const Home = () => {
   const dispatch = useDispatch();

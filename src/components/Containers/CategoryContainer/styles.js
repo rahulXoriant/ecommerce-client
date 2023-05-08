@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CategoryList = styled.div`
+export const CategoryContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

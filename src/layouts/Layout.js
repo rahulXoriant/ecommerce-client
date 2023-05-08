@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import Header from "../components/Header";
 import { useThrottle } from "../hooks";
+import { showTostMessage } from "../utils/notification";
 
 const Layout = () => {
 
@@ -35,10 +35,8 @@ const Layout = () => {
   }, [handleWindowResize]);
 
   useEffect(() => {
-    if (range && range !== "desktop") {
-      toast.info(`Showing app in ${range} view.`, {
-        position: "top-right"
-      });
+    if (window && range && range !== "desktop") {
+      showTostMessage("info", `Showing app in ${range} view.`)
     }
   }, [range])
 

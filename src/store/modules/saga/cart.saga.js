@@ -1,8 +1,8 @@
-import { toast } from "react-toastify";
 import { all, call, put, select, takeLatest } from "redux-saga/effects";
 
 import api from "../../../services/api";
 import { formatPrice } from "../../../utils/format";
+import { showTostMessage } from "../../../utils/notification";
 import {
   ADD_TO_CART_PENDING,
   addToCartRejected,
@@ -11,6 +11,7 @@ import {
   updateAmountRejected,
   updateAmountSuccess
 } from "../actions/cart.actions";
+
 
 function* addToCart(action) {
   try {
@@ -24,9 +25,7 @@ function* addToCart(action) {
     const amount = currentAmount + 1;
 
     if (amount > stockAmount) {
-      toast.warning("Ordered quantity out of stock.", {
-        position: "top-right"
-      });
+      showTostMessage("warning", "Ordered quantity out of stock.")
       return;
     }
 
@@ -55,9 +54,7 @@ function* updateAmount({ id, amount }) {
     const stockAmount = stock.data.amount;
 
     if (amount > stockAmount) {
-      toast.warning("Ordered quantity out of stock.", {
-        position: "top-right"
-      });
+      showTostMessage("warning", "Ordered quantity out of stock.")
       return;
     }
 

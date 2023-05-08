@@ -13,7 +13,6 @@ import * as CartActions from "../../../store/modules/actions/cart.actions";
 import { ProductCard as StyledProductCard } from "./styles";
 
 const ProductCard = ({ product, amount }) => {
-  console.log(product, amount)
   const dispatch = useDispatch();
 
   const handleAddProduct = (id) => {
@@ -34,7 +33,7 @@ const ProductCard = ({ product, amount }) => {
 
   return (
     <StyledProductCard>
-      <Card className="product-card" key={String(product.id)} component="div">
+      <Card className="product-card" component="div">
         <CardContent>
           <img src={product.image} alt={product.title} />
           <Typography variant="h5" component="h5">

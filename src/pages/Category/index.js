@@ -1,15 +1,10 @@
 
-import Box from "@mui/material/Box";
-import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import FilterCard from "../../components/Cards/FilterCard";
-import ProductCard from "../../components/Cards/ProductCard";
-import Loader from "../../components/Loader";
+import ProductContainer from "../../components/Containers/ProductContainer";
 import * as ProductActions from "../../store/modules/actions/product.actions";
-import { ProductContainer, ProductList } from "./styles";
 
 const Category = () => {
   const [filters, setFilters] = useState({});
@@ -33,24 +28,13 @@ const Category = () => {
   }, [filters]);
 
   return (
-    <ProductContainer>
-      {products.loading ? (
-        <Loader />
-      ) : isEmpty(products.value) ? (
-        <Box className="no-product-container">
-          <Box>No Products Available</Box>
-        </Box>
-      ) : (
-        <>
-          <FilterCard isSearchEnabled={false} filters={filters} handleSetFilter={val => setFilters(val)} />
-          <ProductList>
-            {amount && products.value.map((product) => (
-              <ProductCard key={product.id} product={product} amount={amount[product.id]} />
-            ))}
-          </ProductList>
-        </>
-      )}
-    </ProductContainer>
+    <ProductContainer 
+      isSearchEnabled={false} 
+      filters={filters} 
+      handleSetFilter={val => setFilters(val)} 
+      products={products}
+      amount={amount}
+    />
   );
 };
 

@@ -7,11 +7,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import { isEmpty } from "lodash";
+import PropTypes from "prop-types";
 
 import { useDebounce } from "../../../hooks";
 import { FilterCard as StyledFilterCard } from "./styles";
 
-const FilterCard = ({ isSearchEnabled, filters, handleSetFilter  }) => {
+const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
 
   const handleFilterChange = useDebounce((type) => {
     switch (type) {
@@ -100,5 +101,15 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter  }) => {
     </StyledFilterCard>
   )
 }
+
+FilterCard.propTypes = {
+  isSearchEnabled: PropTypes.bool,
+  filters: PropTypes.shape({
+    isCashOnDeliveryAvailable: PropTypes.bool,
+    q: PropTypes.string, 
+    qFields: PropTypes.string
+  }),
+  handleSetFilter: PropTypes.func,
+};
 
 export default FilterCard;

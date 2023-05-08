@@ -10,7 +10,6 @@ import { CategoryCard as StyledCategoryCard } from "./styles";
 const CategoryCard = ({ category }) => (
   <StyledCategoryCard>
     <Card
-      key={String(category.id)}
       sx={{ width: "100%" }}
       component={Link}
       to={`/category/${category.slug}`}

@@ -12,7 +12,6 @@ import {
   updateAmountSuccess
 } from "../actions/cart.actions";
 
-
 function* addToCart(action) {
   try {
     const { id } = action.payload;
@@ -25,12 +24,13 @@ function* addToCart(action) {
     const amount = currentAmount + 1;
 
     if (amount > stockAmount) {
-      showTostMessage("warning", "Ordered quantity out of stock.")
+      showTostMessage("warning", "Ordered quantity out of stock.");
       return;
     }
 
     if (productExists) {
       yield put(updateAmountSuccess(id, amount));
+      showTostMessage("success", "Updated amount successfully.");
     } else {
       const response = yield call(api.get, `/products/${id}`);
 
@@ -40,6 +40,7 @@ function* addToCart(action) {
         priceFormatted: formatPrice(response.data.price)
       };
       yield put(addToCartSuccess(data));
+      showTostMessage("success", "Added to cart successfully.");
     }
   } catch (err) {
     yield put(addToCartRejected(err.message));
@@ -54,11 +55,12 @@ function* updateAmount({ id, amount }) {
     const stockAmount = stock.data.amount;
 
     if (amount > stockAmount) {
-      showTostMessage("warning", "Ordered quantity out of stock.")
+      showTostMessage("warning", "Ordered quantity out of stock.");
       return;
     }
 
     yield put(updateAmountSuccess(id, amount));
+    showTostMessage("success", "Updated amount successfully.");
   } catch (err) {
     yield put(updateAmountRejected(err.message));
   }

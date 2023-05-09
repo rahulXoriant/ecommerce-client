@@ -1,8 +1,7 @@
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CategoryContainer from "../components/Containers/CategoryContainer"
+import CategoryContainer from "../components/Containers/CategoryContainer";
 import * as CategortActions from "../store/modules/actions/category.actions";
 
 const Home = () => {
@@ -16,9 +15,7 @@ const Home = () => {
     loadCategories();
   }, []);
 
-  return (
-    <CategoryContainer categories={categories} />
-  );
+  return <CategoryContainer categories={categories} />;
 };
 
 export default Home;

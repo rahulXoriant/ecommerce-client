@@ -62,8 +62,8 @@ const CheckoutProductCard = ({ product }) => {
         <h3>{product.subtotal}</h3>
       </div>
     </StyledCheckoutProductCard>
-  )
-}
+  );
+};
 
 CheckoutProductCard.propTypes = {
   product: PropTypes.shape({

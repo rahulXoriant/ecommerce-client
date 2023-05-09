@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import Header from "../components/Header";
+import Header from "../components/Common/Header";
 import { useThrottle } from "../hooks";
 import { showTostMessage } from "../utils/notification";
 
 const Layout = () => {
-
-
   const sizeToRange = (size) => {
     if (size < 600) {
       return "mobile";
@@ -36,13 +34,13 @@ const Layout = () => {
 
   useEffect(() => {
     if (window && range && range !== "desktop") {
-      showTostMessage("info", `Showing app in ${range} view.`)
+      showTostMessage("info", `Showing app in ${range} view.`);
     }
-  }, [range])
+  }, [range]);
 
   return (
     <div>
-      <Header />
+      <Header range={range} />
       <Outlet />
     </div>
   );

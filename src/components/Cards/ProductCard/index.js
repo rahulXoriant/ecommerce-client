@@ -44,7 +44,7 @@ const ProductCard = ({ product, amount }) => {
           </Typography>
           <br />
           <Typography variant="h6">
-                    COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
+            COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
           </Typography>
         </CardContent>
         <CardActions>
@@ -71,10 +71,7 @@ const ProductCard = ({ product, amount }) => {
                 </div>
               </div>
               <div className="cart-action-button">
-                <DeleteIcon
-                  style={{ fontSize: 36 }}
-                  onClick={() => removeFromCart(product)}
-                />
+                <DeleteIcon style={{ fontSize: 36 }} onClick={() => removeFromCart(product)} />
               </div>
             </div>
           ) : (
@@ -88,8 +85,8 @@ const ProductCard = ({ product, amount }) => {
         </CardActions>
       </Card>
     </StyledProductCard>
-  )
-}
+  );
+};
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
@@ -100,7 +97,7 @@ ProductCard.propTypes = {
     isCashOnDeliveryAvailable: PropTypes.bool,
     image: PropTypes.string.isRequired
   }),
-  amount: PropTypes.number,
+  amount: PropTypes.number
 };
 
 export default ProductCard;

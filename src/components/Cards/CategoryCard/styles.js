@@ -57,4 +57,4 @@ export const CategoryCard = styled.div`
 			margin: 5px 0 20px;
 		}
 	}
-`
+`;

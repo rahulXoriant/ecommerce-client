@@ -18,19 +18,17 @@ const Category = () => {
   useEffect(() => {
     const loadProducts = async () => {
       const productFilter = {};
-      Object.keys(filters).forEach(
-        (filter) => (productFilter[filter] = filters[filter])
-      );
+      Object.keys(filters).forEach((filter) => (productFilter[filter] = filters[filter]));
       dispatch(ProductActions.getProductsPending(productFilter));
     };
     loadProducts();
   }, [filters]);
 
   return (
-    <ProductContainer 
-      isSearchEnabled={true} 
-      filters={filters} 
-      handleSetFilter={val => setFilters(val)} 
+    <ProductContainer
+      isSearchEnabled={true}
+      filters={filters}
+      handleSetFilter={(val) => setFilters(val)}
       products={products}
       amount={amount}
     />

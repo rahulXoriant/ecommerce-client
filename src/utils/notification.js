@@ -1,24 +1,23 @@
 import { toast } from "react-toastify";
 
 export const showTostMessage = (type, message) => {
-  switch(type) {
-  case "success":
-    toast.success(message, {
-      position: "top-right"
-    });
-    break;
-  case "info":
-    toast.info(message, {
-      position: "top-right"
-    });
-    break;
-  case "warning":
-    toast.warning(message, {
-      position: "top-right"
-    });
-    break;
-  default:
-    break;
+  const options = {
+    position: "top-right",
+    autoClose: 2000,
+    draggablePercent: 60
+  };
+  switch (type) {
+    case "success":
+      toast.success(message, options);
+      break;
+    case "info":
+      toast.info(message, options);
+      break;
+    case "warning":
+      toast.warning(message, options);
+      break;
+    default:
+      break;
   }
   return;
-}
+};

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -28,10 +27,10 @@ const Category = () => {
   }, [filters]);
 
   return (
-    <ProductContainer 
-      isSearchEnabled={false} 
-      filters={filters} 
-      handleSetFilter={val => setFilters(val)} 
+    <ProductContainer
+      isSearchEnabled={false}
+      filters={filters}
+      handleSetFilter={(val) => setFilters(val)}
       products={products}
       amount={amount}
     />

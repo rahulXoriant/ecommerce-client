@@ -18,9 +18,7 @@ const Checkout = () => {
     )
   );
 
-  return (
-    <CheckoutContainer cart={cart} total={total} />
-  );
+  return <CheckoutContainer cart={cart} total={total} />;
 };
 
 export default Checkout;

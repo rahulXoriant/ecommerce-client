@@ -13,52 +13,59 @@ import { useDebounce } from "../../../hooks";
 import { FilterCard as StyledFilterCard } from "./styles";
 
 const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
+  const handleFilterChange = useDebounce(
+    (type) => {
+      switch (type) {
+        case "COD":
+          if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
+            handleSetFilter((prev) =>
+              Object.keys(prev)
+                .filter((key) => key !== "isCashOnDeliveryAvailable")
+                .reduce((acc, key) => {
+                  acc[key] = prev[key];
+                  return acc;
+                }, {})
+            );
+          } else {
+            handleSetFilter((prev) => ({
+              ...prev,
+              isCashOnDeliveryAvailable: true
+            }));
+          }
+          break;
+        default:
+          break;
+      }
+    },
+    100,
+    [filters]
+  );
 
-  const handleFilterChange = useDebounce((type) => {
-    switch (type) {
-    case "COD":
-      if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
-        handleSetFilter((prev) =>
-          Object.keys(prev)
-            .filter((key) => key !== "isCashOnDeliveryAvailable")
+  const handleSearch = useDebounce(
+    (value) => {
+      if (!isEmpty(value.trim())) {
+        handleSetFilter({
+          ...filters,
+          q: value.trim().toLowerCase(),
+          qFields: "title,category"
+        });
+      } else {
+        handleSetFilter(
+          Object.keys(filters)
+            .filter((key) => !["q", "qFields"].includes(key))
             .reduce((acc, key) => {
-              acc[key] = prev[key];
+              acc[key] = filters[key];
               return acc;
             }, {})
         );
-      } else {
-        handleSetFilter((prev) => ({
-          ...prev,
-          isCashOnDeliveryAvailable: true
-        }));
       }
-      break;
-    default:
-      break;
-    }
-  }, 100, [filters]);
-
-  const handleSearch = useDebounce((value) => {
-    if (!isEmpty(value.trim())) {
-      handleSetFilter({
-        ...filters,
-        q: value.trim().toLowerCase(),
-        qFields: "title,category"
-      });
-    } else {
-      handleSetFilter(
-        Object.keys(filters)
-          .filter((key) => !["q", "qFields"].includes(key))
-          .reduce((acc, key) => {
-            acc[key] = filters[key];
-            return acc;
-          }, {})
-      );
-    }
-  }, 500, [filters]);
+    },
+    500,
+    [filters]
+  );
 
   return (
-    <StyledFilterCard>
+    <StyledFilterCard isSearchEnabled={isSearchEnabled}>
       <Card className="filters" component="div">
         <CardContent>
           {isSearchEnabled ? (
@@ -99,17 +106,17 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
         </CardContent>
       </Card>
     </StyledFilterCard>
-  )
-}
+  );
+};
 
 FilterCard.propTypes = {
   isSearchEnabled: PropTypes.bool,
   filters: PropTypes.shape({
     isCashOnDeliveryAvailable: PropTypes.bool,
-    q: PropTypes.string, 
+    q: PropTypes.string,
     qFields: PropTypes.string
   }),
-  handleSetFilter: PropTypes.func,
+  handleSetFilter: PropTypes.func
 };
 
 export default FilterCard;

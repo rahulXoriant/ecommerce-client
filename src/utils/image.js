@@ -7,19 +7,19 @@ import sneakers from "../assets/images/category/sneakers.png";
 
 export const getCategoryLogo = (categoryName) => {
   switch (categoryName) {
-  case "Sneakers":
-    return sneakers;
-  case "Boots":
-    return boots;
-  case "Sliders":
-    return sliders;
-  case "Heels":
-    return heels;
-  case "Formal Shoes":
-    return formalShoes;
-  case "Hiking Shoes":
-    return hikingShoes;
-  default:
-    break;
+    case "Sneakers":
+      return sneakers;
+    case "Boots":
+      return boots;
+    case "Sliders":
+      return sliders;
+    case "Heels":
+      return heels;
+    case "Formal Shoes":
+      return formalShoes;
+    case "Hiking Shoes":
+      return hikingShoes;
+    default:
+      break;
   }
 };

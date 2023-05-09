@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
 import CheckoutProductCard from "../../../components/Cards/CheckoutProductCard";
-import { CartContainer, CheckoutContainer as StyledCheckoutContainer, Total } from "./styles"
+import { CartContainer, CheckoutContainer as StyledCheckoutContainer, Total } from "./styles";
 
 const CheckoutContainer = ({ cart, total }) => (
   <StyledCheckoutContainer>
@@ -34,7 +34,7 @@ const CheckoutContainer = ({ cart, total }) => (
       </>
     )}
   </StyledCheckoutContainer>
-)
+);
 
 CheckoutContainer.propTypes = {
   cart: PropTypes.arrayOf(
@@ -50,7 +50,7 @@ CheckoutContainer.propTypes = {
       image: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  total: PropTypes.string.isRequired,
+  total: PropTypes.string.isRequired
 };
 
 export default CheckoutContainer;

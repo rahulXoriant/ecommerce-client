@@ -9,11 +9,7 @@ import { CategoryCard as StyledCategoryCard } from "./styles";
 
 const CategoryCard = ({ category }) => (
   <StyledCategoryCard>
-    <Card
-      sx={{ width: "100%" }}
-      component={Link}
-      to={`/category/${category.slug}`}
-    >
+    <Card sx={{ width: "100%" }} component={Link} to={`/category/${category.slug}`}>
       <CardContent>
         <img src={getCategoryLogo(category.name)} alt={category.name} />
         <Typography variant="h5" component="h5">
@@ -28,8 +24,8 @@ CategoryCard.propTypes = {
   category: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-  }),
+    slug: PropTypes.string.isRequired
+  })
 };
 
 export default CategoryCard;

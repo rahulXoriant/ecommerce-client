@@ -8,12 +8,16 @@ import { getCategoryLogo } from "../../../utils/image";
 import { CategoryCard as StyledCategoryCard } from "./styles";
 
 const CategoryCard = ({ category }) => (
-  <StyledCategoryCard>
-    <Card sx={{ width: "100%" }} component={Link} to={`/category/${category.slug}`}>
+  <StyledCategoryCard data-test="category-card">
+    <Card sx={{ width: "100%" }} component={Link} to={`/category/${category?.slug}`}>
       <CardContent>
-        <img src={getCategoryLogo(category.name)} alt={category.name} />
-        <Typography variant="h5" component="h5">
-          {category.name}
+        <img
+          src={getCategoryLogo(category?.name)}
+          alt={category?.name}
+          data-test="category-image"
+        />
+        <Typography variant="h5" component="h5" data-test="category-name">
+          {category?.name}
         </Typography>
       </CardContent>
     </Card>

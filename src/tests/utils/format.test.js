@@ -1,4 +1,5 @@
 import { formatPrice, jsonToQueryString } from "../../utils/format";
+import { checkTestCase } from "../../utils/testUtils";
 
 describe("Testing Utils", () => {
   describe("Formats", () => {
@@ -37,11 +38,9 @@ describe("Testing Utils", () => {
           expectedValue: "₹1,000.00"
         }
       ];
-      testCases.forEach((testCase, index) => {
-        it(`Test Case ${index + 1}`, () => {
-          expect(formatPrice(testCase.input)).toBe(testCase.expectedValue);
-        });
-      });
+      testCases.forEach((testCase, index) =>
+        checkTestCase(index + 1, formatPrice, testCase.input, testCase.expectedValue)
+      );
     });
     describe("jsonToQueryStrings", () => {
       const testCases = [
@@ -66,11 +65,9 @@ describe("Testing Utils", () => {
           expectedValue: ""
         }
       ];
-      testCases.forEach((testCase, index) => {
-        it(`Test Case ${index + 1}`, () => {
-          expect(jsonToQueryString(testCase.input)).toBe(testCase.expectedValue);
-        });
-      });
+      testCases.forEach((testCase, index) =>
+        checkTestCase(index + 1, jsonToQueryString, testCase.input, testCase.expectedValue)
+      );
     });
   });
 });

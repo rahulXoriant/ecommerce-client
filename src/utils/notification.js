@@ -7,17 +7,17 @@ export const showTostMessage = (type, message) => {
     draggablePercent: 60
   };
   switch (type) {
-    case "success":
-      toast.success(message, options);
-      break;
-    case "info":
-      toast.info(message, options);
-      break;
-    case "warning":
-      toast.warning(message, options);
-      break;
-    default:
-      break;
+  case "success":
+    toast.success(message, options);
+    break;
+  case "info":
+    toast.info(message, options);
+    break;
+  case "warning":
+    toast.warning(message, options);
+    break;
+  default:
+    break;
   }
   return;
 };

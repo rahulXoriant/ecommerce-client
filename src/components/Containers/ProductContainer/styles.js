@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ProductContainer = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 20px;
   margin-top: 100px;
@@ -22,4 +23,9 @@ export const ProductList = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 64px;
+
+  @media (max-width: 480px) {
+    margin-top: 108px;
+  }
 `;

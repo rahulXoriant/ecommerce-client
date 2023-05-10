@@ -16,25 +16,25 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
   const handleFilterChange = useDebounce(
     (type) => {
       switch (type) {
-        case "COD":
-          if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
-            handleSetFilter((prev) =>
-              Object.keys(prev)
-                .filter((key) => key !== "isCashOnDeliveryAvailable")
-                .reduce((acc, key) => {
-                  acc[key] = prev[key];
-                  return acc;
-                }, {})
-            );
-          } else {
-            handleSetFilter((prev) => ({
-              ...prev,
-              isCashOnDeliveryAvailable: true
-            }));
-          }
-          break;
-        default:
-          break;
+      case "COD":
+        if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
+          handleSetFilter((prev) =>
+            Object.keys(prev)
+              .filter((key) => key !== "isCashOnDeliveryAvailable")
+              .reduce((acc, key) => {
+                acc[key] = prev[key];
+                return acc;
+              }, {})
+          );
+        } else {
+          handleSetFilter((prev) => ({
+            ...prev,
+            isCashOnDeliveryAvailable: true
+          }));
+        }
+        break;
+      default:
+        break;
       }
     },
     100,

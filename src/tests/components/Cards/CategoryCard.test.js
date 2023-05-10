@@ -1,7 +1,6 @@
 import { configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
-configure({ adapter: new Adapter() });
 
 configure({ adapter: new Adapter() });
 

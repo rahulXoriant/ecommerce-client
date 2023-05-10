@@ -23,8 +23,4 @@ export const checkProps = (component, expectedProps) => {
 export const testStore = (initialState) => {
   const mockStore = configureStore();
   return mockStore(initialState);
-  // return configureStore({
-  //   reducer: { ...rootReducer, preloadedState: initialState },
-  //   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware)
-  // });
 };

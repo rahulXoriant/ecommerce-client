@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
 export const FilterCard = styled.div`
+  position: fixed;
+  width: calc(100% - 40px);
+  max-width: 977px;
+  margin: 0 auto;
+  min-width: 300px;
+  top: 82px;
+
   div.filters > div {
     display: flex;
     flex-direction: row;

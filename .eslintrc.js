@@ -24,8 +24,9 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
     "indent": ["error", 2],
-    "linebreak-style": 1,
     "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "linebreak-style": ["error", "unix"],
     "simple-import-sort/imports": "error"
   },
   settings: {

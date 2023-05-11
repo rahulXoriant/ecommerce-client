@@ -18,7 +18,7 @@ const setUp = (props = {}) => {
   const component = shallow(
     <Provider store={store}>
       <CategoryCard range={componentProps.range} />
-    </Provider>
+    </Provider>,
   )
     .childAt(0)
     .dive();
@@ -32,8 +32,8 @@ describe("Shallow CategoryCard", () => {
       category: {
         id: 1,
         name: "Test Name",
-        slug: "test-slug"
-      }
+        slug: "test-slug",
+      },
     });
   });
 

@@ -24,7 +24,7 @@ const ProductContainer = ({ isSearchEnabled, filters, handleSetFilter, products,
       </Box>
     ) : (
       <ProductList>
-        {products.value.map((product) => (
+        {products.value.map(product => (
           <ProductCard key={product.id} product={product} amount={amount[product.id]} />
         ))}
       </ProductList>
@@ -37,7 +37,7 @@ ProductContainer.propTypes = {
   filters: PropTypes.shape({
     isCashOnDeliveryAvailable: PropTypes.bool,
     q: PropTypes.string,
-    qFields: PropTypes.string
+    qFields: PropTypes.string,
   }),
   handleSetFilter: PropTypes.func,
   products: PropTypes.shape({
@@ -49,14 +49,14 @@ ProductContainer.propTypes = {
         price: PropTypes.number.isRequired,
         priceFormatted: PropTypes.string.isRequired,
         isCashOnDeliveryAvailable: PropTypes.bool,
-        image: PropTypes.string.isRequired
-      })
+        image: PropTypes.string.isRequired,
+      }),
     ),
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
   }),
   amount: PropTypes.shape({
-    [PropTypes.number]: PropTypes.number
-  })
+    [PropTypes.number]: PropTypes.number,
+  }),
 };
 
 export default ProductContainer;

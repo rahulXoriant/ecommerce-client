@@ -20,7 +20,7 @@ export const checkProps = (component, expectedProps) => {
   return propsErr;
 };
 
-export const testStore = (initialState) => {
+export const testStore = initialState => {
   const mockStore = configureStore();
   return mockStore(initialState);
 };

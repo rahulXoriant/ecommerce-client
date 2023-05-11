@@ -10,7 +10,7 @@ import { Cart, Container, StyledMenu } from "./styles";
 
 const Header = ({ range }) => {
   const [open, setOpen] = useState(false);
-  const cartSize = useAppSelector((state) => state.cart.length);
+  const cartSize = useAppSelector(state => state.cart.length);
   return (
     <Container data-test="header-container">
       <Link to="/">
@@ -19,7 +19,7 @@ const Header = ({ range }) => {
 
       {range !== "desktop" ? (
         <>
-          <Burger open={open} handleOpen={(val) => setOpen(val)} />
+          <Burger open={open} handleOpen={val => setOpen(val)} />
           <StyledMenu open={open}>
             <Link to="/" className="link">
               <strong>Home</strong>
@@ -62,7 +62,7 @@ const Header = ({ range }) => {
 };
 
 Header.propTypes = {
-  range: PropTypes.string.isRequired
+  range: PropTypes.string.isRequired,
 };
 
 export default Header;

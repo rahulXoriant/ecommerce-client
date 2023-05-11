@@ -18,7 +18,7 @@ const CheckoutContainer = ({ cart, total }) => (
             <h2>My Cart</h2>
           </div>
           <div className="product-details">
-            {cart.map((product) => (
+            {cart.map(product => (
               <CheckoutProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -47,10 +47,10 @@ CheckoutContainer.propTypes = {
       priceFormatted: PropTypes.string.isRequired,
       subtotal: PropTypes.string.isRequired,
       isCashOnDeliveryAvailable: PropTypes.bool,
-      image: PropTypes.string.isRequired
-    }).isRequired
+      image: PropTypes.string.isRequired,
+    }).isRequired,
   ).isRequired,
-  total: PropTypes.string.isRequired
+  total: PropTypes.string.isRequired,
 };
 
 export default CheckoutContainer;

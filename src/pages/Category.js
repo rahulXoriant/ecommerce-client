@@ -8,19 +8,19 @@ import { useAppDispatch, useAppSelector } from "../store/redux-hooks";
 const Category = () => {
   const [filters, setFilters] = useState({});
   const { categorySlug } = useParams();
-  const amount = useAppSelector((state) =>
+  const amount = useAppSelector(state =>
     state.cart.reduce((sumAmount, product) => {
       sumAmount[product.id] = product.amount;
       return sumAmount;
-    }, {})
+    }, {}),
   );
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.product);
+  const products = useAppSelector(state => state.product);
 
   useEffect(() => {
     const loadProducts = async () => {
       const productFilter = { category: categorySlug };
-      Object.keys(filters).forEach((filter) => (productFilter[filter] = filters[filter]));
+      Object.keys(filters).forEach(filter => (productFilter[filter] = filters[filter]));
       dispatch(ProductActions.getProductsPending(productFilter));
     };
     loadProducts();
@@ -30,7 +30,7 @@ const Category = () => {
     <ProductContainer
       isSearchEnabled={false}
       filters={filters}
-      handleSetFilter={(val) => setFilters(val)}
+      handleSetFilter={val => setFilters(val)}
       products={products}
       amount={amount}
     />

@@ -19,7 +19,7 @@ export const FilterCard = styled.div`
     padding: 16px;
 
     @media (max-width: 480px) {
-      flex-direction: ${(params) => (params.isSearchEnabled ? "column" : "row")};
+      flex-direction: ${params => (params.isSearchEnabled ? "column" : "row")};
     }
 
     > div.filter {

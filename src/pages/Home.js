@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../store/redux-hooks";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state.category);
+  const categories = useAppSelector(state => state.category);
 
   useEffect(() => {
     const loadCategories = async () => {

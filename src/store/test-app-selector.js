@@ -9,48 +9,48 @@ const state = {
       image:
         "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19150424/2022/11/6/2e665785-7fd5-43aa-9036-96bb2e55d0ea1667717814913PumaMenGreyDynamiteSlip-OnSneakers1.jpg",
       amount: 1,
-      priceFormatted: "₹2,249.00"
-    }
+      priceFormatted: "₹2,249.00",
+    },
   ],
   category: {
     value: [
       {
         id: 1,
         name: "Sneakers",
-        slug: "sneakers"
+        slug: "sneakers",
       },
       {
         id: 2,
         name: "Boots",
-        slug: "boots"
+        slug: "boots",
       },
       {
         id: 3,
         name: "Sliders",
-        slug: "sliders"
+        slug: "sliders",
       },
       {
         id: 4,
         name: "Heels",
-        slug: "heels"
+        slug: "heels",
       },
       {
         id: 5,
         name: "Formal Shoes",
-        slug: "formal-shoes"
+        slug: "formal-shoes",
       },
       {
         id: 6,
         name: "Hiking Shoes",
-        slug: "hiking-shoes"
-      }
+        slug: "hiking-shoes",
+      },
     ],
-    loading: false
+    loading: false,
   },
   product: {
     value: null,
-    loading: true
-  }
+    loading: true,
+  },
 };
 
-export const testUserAppSelector = (fnc) => fnc(state);
+export const testUserAppSelector = fnc => fnc(state);

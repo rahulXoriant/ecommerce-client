@@ -28,8 +28,8 @@ CategoryCard.propTypes = {
   category: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired
-  })
+    slug: PropTypes.string.isRequired,
+  }),
 };
 
 export default CategoryCard;

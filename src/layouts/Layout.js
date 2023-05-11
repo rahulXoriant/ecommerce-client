@@ -6,7 +6,7 @@ import { useThrottle } from "../hooks";
 import { showTostMessage } from "../utils/notification";
 
 const Layout = () => {
-  const sizeToRange = (size) => {
+  const sizeToRange = size => {
     if (size < 600) {
       return "mobile";
     } else if (size > 1200) {
@@ -22,7 +22,7 @@ const Layout = () => {
       setRange(sizeToRange(window.innerWidth));
     },
     1000,
-    []
+    [],
   );
 
   useEffect(() => {

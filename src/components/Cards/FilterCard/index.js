@@ -14,54 +14,54 @@ import { FilterCard as StyledFilterCard } from "./styles";
 
 const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
   const handleFilterChange = useDebounce(
-    (type) => {
+    type => {
       switch (type) {
-      case "COD":
-        if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
-          handleSetFilter((prev) =>
-            Object.keys(prev)
-              .filter((key) => key !== "isCashOnDeliveryAvailable")
-              .reduce((acc, key) => {
-                acc[key] = prev[key];
-                return acc;
-              }, {})
-          );
-        } else {
-          handleSetFilter((prev) => ({
-            ...prev,
-            isCashOnDeliveryAvailable: true
-          }));
-        }
-        break;
-      default:
-        break;
+        case "COD":
+          if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
+            handleSetFilter(prev =>
+              Object.keys(prev)
+                .filter(key => key !== "isCashOnDeliveryAvailable")
+                .reduce((acc, key) => {
+                  acc[key] = prev[key];
+                  return acc;
+                }, {}),
+            );
+          } else {
+            handleSetFilter(prev => ({
+              ...prev,
+              isCashOnDeliveryAvailable: true,
+            }));
+          }
+          break;
+        default:
+          break;
       }
     },
     100,
-    [filters]
+    [filters],
   );
 
   const handleSearch = useDebounce(
-    (value) => {
+    value => {
       if (!isEmpty(value.trim())) {
         handleSetFilter({
           ...filters,
           q: value.trim().toLowerCase(),
-          qFields: "title,category"
+          qFields: "title,category",
         });
       } else {
         handleSetFilter(
           Object.keys(filters)
-            .filter((key) => !["q", "qFields"].includes(key))
+            .filter(key => !["q", "qFields"].includes(key))
             .reduce((acc, key) => {
               acc[key] = filters[key];
               return acc;
-            }, {})
+            }, {}),
         );
       }
     },
     500,
-    [filters]
+    [filters],
   );
 
   return (
@@ -76,7 +76,7 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
                   id="standard-search"
                   variant="standard"
                   placeholder="Search Products"
-                  onChange={(e) => handleSearch(e.target.value)}
+                  onChange={e => handleSearch(e.target.value)}
                   type="search"
                   sx={{ width: "100%", marginLeft: "20px" }}
                   InputProps={{
@@ -84,7 +84,7 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
                       <InputAdornment position="start">
                         <SearchIcon />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               }
@@ -114,9 +114,9 @@ FilterCard.propTypes = {
   filters: PropTypes.shape({
     isCashOnDeliveryAvailable: PropTypes.bool,
     q: PropTypes.string,
-    qFields: PropTypes.string
+    qFields: PropTypes.string,
   }),
-  handleSetFilter: PropTypes.func
+  handleSetFilter: PropTypes.func,
 };
 
 export default FilterCard;

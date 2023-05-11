@@ -14,7 +14,7 @@ const Burger = ({ open, handleOpen }) => {
 
 Burger.propTypes = {
   open: PropTypes.bool,
-  handleOpen: PropTypes.func
+  handleOpen: PropTypes.func,
 };
 
 export default Burger;

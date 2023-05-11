@@ -15,7 +15,7 @@ import { ProductCard as StyledProductCard } from "./styles";
 const ProductCard = ({ product, amount }) => {
   const dispatch = useDispatch();
 
-  const handleAddProduct = (id) => {
+  const handleAddProduct = id => {
     dispatch(CartActions.addToCartPending(id));
   };
 
@@ -27,7 +27,7 @@ const ProductCard = ({ product, amount }) => {
     dispatch(CartActions.updateAmountPending(product_id, present_amount - 1));
   };
 
-  const removeFromCart = (product) => {
+  const removeFromCart = product => {
     dispatch(CartActions.removeFromCart(product.id));
   };
 
@@ -55,7 +55,7 @@ const ProductCard = ({ product, amount }) => {
                   <RemoveCircleOutlineIcon
                     style={{
                       fontSize: 36,
-                      color: amount > 1 ? "#000" : "#888"
+                      color: amount > 1 ? "#000" : "#888",
                     }}
                     onClick={() => decrement(product.id, amount)}
                   />
@@ -95,9 +95,9 @@ ProductCard.propTypes = {
     price: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     isCashOnDeliveryAvailable: PropTypes.bool,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired,
   }),
-  amount: PropTypes.number
+  amount: PropTypes.number,
 };
 
 export default ProductCard;

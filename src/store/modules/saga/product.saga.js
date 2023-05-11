@@ -5,16 +5,16 @@ import { formatPrice, jsonToQueryString } from "../../../utils/format";
 import {
   GET_PRODUCTS_PENDING,
   getProductsRejected,
-  getProductsSuccess
+  getProductsSuccess,
 } from "../actions/product.actions";
 
 function* getProducts(action) {
   try {
     const { filter } = action;
     const products = yield call(api.get, `/products?${jsonToQueryString(filter)}`);
-    const data = products.data.map((product) => ({
+    const data = products.data.map(product => ({
       ...product,
-      priceFormatted: formatPrice(product.price)
+      priceFormatted: formatPrice(product.price),
     }));
     yield put(getProductsSuccess(data));
   } catch (err) {

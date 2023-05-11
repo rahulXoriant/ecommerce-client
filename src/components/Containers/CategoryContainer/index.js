@@ -15,7 +15,7 @@ const CategoryContainer = ({ categories }) => (
         <Box>No Category Available</Box>
       </Box>
     ) : (
-      categories.value.map((category) => <CategoryCard key={category.id} category={category} />)
+      categories.value.map(category => <CategoryCard key={category.id} category={category} />)
     )}
   </StyledCategoryContainer>
 );
@@ -26,11 +26,11 @@ CategoryContainer.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired
-      })
+        slug: PropTypes.string.isRequired,
+      }),
     ),
-    loading: PropTypes.bool
-  })
+    loading: PropTypes.bool,
+  }),
 };
 
 export default CategoryContainer;

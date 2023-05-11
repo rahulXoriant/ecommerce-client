@@ -2,18 +2,18 @@ import { GET_PRODUCTS_REJECTED, GET_PRODUCTS_SUCCESS } from "../actions/product.
 
 const category = (state = { value: null, loading: true }, action) => {
   switch (action.type) {
-  case GET_PRODUCTS_SUCCESS:
-    return {
-      ...state,
-      ...action.payload
-    };
-  case GET_PRODUCTS_REJECTED:
-    return {
-      ...state,
-      ...action.payload
-    };
-  default:
-    return state;
+    case GET_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case GET_PRODUCTS_REJECTED:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    default:
+      return state;
   }
 };
 

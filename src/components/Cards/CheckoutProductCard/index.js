@@ -11,15 +11,15 @@ import { CheckoutProductCard as StyledCheckoutProductCard } from "./styles";
 const CheckoutProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
-  const increment = (product) => {
+  const increment = product => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount + 1));
   };
 
-  const decrement = (product) => {
+  const decrement = product => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount - 1));
   };
 
-  const removeFromCart = (product) => {
+  const removeFromCart = product => {
     dispatch(CartActions.removeFromCart(product.id));
   };
   return (
@@ -72,8 +72,8 @@ CheckoutProductCard.propTypes = {
     price: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     isCashOnDeliveryAvailable: PropTypes.bool,
-    image: PropTypes.string.isRequired
-  })
+    image: PropTypes.string.isRequired,
+  }),
 };
 
 export default CheckoutProductCard;

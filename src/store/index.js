@@ -12,7 +12,7 @@ const middleware = [sagaMiddleware];
 // using configureStore from redux toolkit because createStore from redux has been depreciated
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middleware),
 });
 
 sagaMiddleware.run(rootSaga);

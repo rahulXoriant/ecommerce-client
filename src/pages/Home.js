@@ -6,7 +6,7 @@ import * as CategortActions from "../store/modules/actions/category.actions";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.category);
+  const categories = useSelector(state => state.category);
 
   useEffect(() => {
     const loadCategories = async () => {

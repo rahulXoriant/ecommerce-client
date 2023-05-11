@@ -9,13 +9,13 @@ import {
   addToCartSuccess,
   UPDATE_CART_AMOUNT_PENDING,
   updateAmountRejected,
-  updateAmountSuccess
+  updateAmountSuccess,
 } from "../actions/cart.actions";
 
 function* addToCart(action) {
   try {
     const { id } = action.payload;
-    const productExists = yield select((state) => state.cart.find((p) => p.id === id));
+    const productExists = yield select(state => state.cart.find(p => p.id === id));
 
     const stock = yield call(api.get, `/stock/${id}`);
 
@@ -37,7 +37,7 @@ function* addToCart(action) {
       const data = {
         ...response.data,
         amount: 1,
-        priceFormatted: formatPrice(response.data.price)
+        priceFormatted: formatPrice(response.data.price),
       };
       yield put(addToCartSuccess(data));
       showTostMessage("success", "Added to cart successfully.");
@@ -68,5 +68,5 @@ function* updateAmount({ id, amount }) {
 
 export default all([
   takeLatest(ADD_TO_CART_PENDING, addToCart),
-  takeLatest(UPDATE_CART_AMOUNT_PENDING, updateAmount)
+  takeLatest(UPDATE_CART_AMOUNT_PENDING, updateAmount),
 ]);

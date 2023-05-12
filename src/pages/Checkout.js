@@ -11,9 +11,6 @@ const Checkout = () => {
   );
   const total = useAppSelector(state =>
     formatPrice(
-      state.cart.reduce((totalSum, product) => {
-        return totalSum + product.price * product.amount;
-      }, 0),
     ),
   );
 

@@ -6,20 +6,20 @@ import CheckoutProductCard from "../../../components/Cards/CheckoutProductCard";
 import { CartContainer, CheckoutContainer as StyledCheckoutContainer, Total } from "./styles";
 
 const CheckoutContainer = ({ cart, total }) => (
-  <StyledCheckoutContainer>
+  <StyledCheckoutContainer data-test="checkout-container">
     {isEmpty(cart) ? (
-      <Box className="no-product-cart-container">
+      <Box className="no-product-cart-container" data-test="no-product-cart-container">
         <Box>No Products in Cart</Box>
       </Box>
     ) : (
       <>
-        <CartContainer>
+        <CartContainer data-test="cart-container">
           <div>
             <h2>My Cart</h2>
           </div>
-          <div className="product-details">
+          <div className="product-details" data-test="product-list">
             {cart.map(product => (
-              <CheckoutProductCard key={product.id} product={product} />
+              <CheckoutProductCard key={product.id} product={product} data-test="product-card" />
             ))}
           </div>
         </CartContainer>

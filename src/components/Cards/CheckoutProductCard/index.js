@@ -3,13 +3,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import PropTypes from "prop-types";
 import React from "react";
-import { useDispatch } from "react-redux";
 
 import * as CartActions from "../../../store/modules/actions/cart.actions";
+import { useAppDispatch } from "../../../store/redux-hooks";
 import { CheckoutProductCard as StyledCheckoutProductCard } from "./styles";
 
 const CheckoutProductCard = ({ product }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const increment = product => {
     dispatch(CartActions.updateAmountPending(product.id, product.amount + 1));
@@ -23,15 +23,15 @@ const CheckoutProductCard = ({ product }) => {
     dispatch(CartActions.removeFromCart(product.id));
   };
   return (
-    <StyledCheckoutProductCard key={product.id} className="product">
+    <StyledCheckoutProductCard key={product.id} className="product" data-test="product-card">
       <div className="product-detail">
         <div>
-          <img src={product.image} alt={product.title} />
+          <img src={product.image} alt={product.title} data-test="product-image" />
         </div>
         <div className="product-info">
           <div className="product-name">
-            <h4>{product.title}</h4>
-            <span>{product.priceFormatted}</span>
+            <h4 data-test="product-title">{product.title}</h4>
+            <span data-test="product-price">{product.priceFormatted}</span>
           </div>
           <div className="product-actions">
             <button type="button">
@@ -70,6 +70,7 @@ CheckoutProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    priceFormatted: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     isCashOnDeliveryAvailable: PropTypes.bool,
     image: PropTypes.string.isRequired,

@@ -4,7 +4,7 @@ import { StyledBurger } from "./styles";
 
 const Burger = ({ open, handleOpen }) => {
   return (
-    <StyledBurger open={open} onClick={() => handleOpen(!open)}>
+    <StyledBurger open={open} onClick={() => handleOpen(!open)} data-test="burger">
       <div />
       <div />
       <div />

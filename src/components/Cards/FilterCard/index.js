@@ -16,25 +16,25 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
   const handleFilterChange = useDebounce(
     type => {
       switch (type) {
-      case "COD":
-        if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
-          handleSetFilter(prev =>
-            Object.keys(prev)
-              .filter(key => key !== "isCashOnDeliveryAvailable")
-              .reduce((acc, key) => {
-                acc[key] = prev[key];
-                return acc;
-              }, {}),
-          );
-        } else {
-          handleSetFilter(prev => ({
-            ...prev,
-            isCashOnDeliveryAvailable: true,
-          }));
-        }
-        break;
-      default:
-        break;
+        case "COD":
+          if (Object.prototype.hasOwnProperty.call(filters, "isCashOnDeliveryAvailable")) {
+            handleSetFilter(prev =>
+              Object.keys(prev)
+                .filter(key => key !== "isCashOnDeliveryAvailable")
+                .reduce((acc, key) => {
+                  acc[key] = prev[key];
+                  return acc;
+                }, {}),
+            );
+          } else {
+            handleSetFilter(prev => ({
+              ...prev,
+              isCashOnDeliveryAvailable: true,
+            }));
+          }
+          break;
+        default:
+          break;
       }
     },
     100,
@@ -65,11 +65,12 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
   );
 
   return (
-    <StyledFilterCard isSearchEnabled={isSearchEnabled}>
+    <StyledFilterCard isSearchEnabled={isSearchEnabled} data-test="filter-card">
       <Card className="filters" component="div">
         <CardContent>
           {isSearchEnabled ? (
             <FormControlLabel
+              data-test="filter-search-input"
               sx={{ flexGrow: 1 }}
               control={
                 <TextField
@@ -90,9 +91,10 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
               }
             />
           ) : (
-            <Box>Filters</Box>
+            <Box data-test="filter-title">Filters</Box>
           )}
           <FormControlLabel
+            data-test="filter-is-cod-available-checkbox"
             control={
               <Checkbox
                 checked={!!filters.isCashOnDeliveryAvailable}

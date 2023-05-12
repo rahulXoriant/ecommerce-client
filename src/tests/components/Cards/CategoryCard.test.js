@@ -1,13 +1,11 @@
-import { configure, shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { shallow } from "enzyme";
 import { Provider } from "react-redux";
-
-configure({ adapter: new Adapter() });
 
 import CategoryCard from "../../../components/Cards/CategoryCard";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
 import { findByTestAtrr, testStore } from "../../../utils/testUtils";
+import { initialState } from "../../constants";
 
 jest.mock("../../../store/redux-hooks");
 
@@ -29,6 +27,7 @@ describe("Shallow CategoryCard", () => {
   let component;
   beforeEach(() => {
     component = setUp({
+      initialState: initialState,
       category: {
         id: 1,
         name: "Test Name",

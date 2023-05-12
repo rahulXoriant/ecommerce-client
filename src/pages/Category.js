@@ -16,7 +16,7 @@ const Category = () => {
   );
   const dispatch = useAppDispatch();
   const products = useAppSelector(state => state.product);
-  
+
   useEffect(() => {
     const loadProducts = async () => {
       const productFilter = { category: categorySlug };

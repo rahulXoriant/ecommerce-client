@@ -14,6 +14,10 @@ const Category = () => {
   );
   const dispatch = useAppDispatch();
   const products = useAppSelector(state => state.product);
+  
+  useEffect(() => {
+    const loadProducts = async () => {
+      const productFilter = {};
       Object.keys(filters).forEach(filter => (productFilter[filter] = filters[filter]));
       dispatch(ProductActions.getProductsPending(productFilter));
     };

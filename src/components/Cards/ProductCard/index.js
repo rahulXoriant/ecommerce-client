@@ -51,8 +51,9 @@ const ProductCard = ({ product, amount }) => {
           {amount ? (
             <div className="cart-actions">
               <div className="cart-manupulation">
-                <div className="cart-action-button">
+                <div className="cart-action-button" data-test="cart-action-button">
                   <RemoveCircleOutlineIcon
+                    data-test="decrement-product-action"
                     style={{
                       fontSize: 36,
                       color: amount > 1 ? "#000" : "#888",
@@ -63,19 +64,24 @@ const ProductCard = ({ product, amount }) => {
                 <div>
                   <input type="number" readOnly value={amount} />
                 </div>
-                <div className="cart-action-button">
+                <div className="cart-action-button" data-test="cart-action-button">
                   <AddCircleOutlineIcon
+                    data-test="increment-product-action"
                     style={{ fontSize: 36, color: "#000" }}
                     onClick={() => increment(product.id, amount)}
                   />
                 </div>
               </div>
-              <div className="cart-action-button">
-                <DeleteIcon style={{ fontSize: 36 }} onClick={() => removeFromCart(product)} />
+              <div className="cart-action-button" data-test="cart-action-button">
+                <DeleteIcon 
+                  data-test="delete-product-action" 
+                  style={{ fontSize: 36 }} 
+                  onClick={() => removeFromCart(product)} 
+                />
               </div>
             </div>
           ) : (
-            <button type="button" onClick={() => handleAddProduct(product.id)}>
+            <button type="button" data-test="add-to-cart-action" onClick={() => handleAddProduct(product.id)}>
               <div>
                 <AddShoppingCartIcon size={16} color="#fff" />
               </div>

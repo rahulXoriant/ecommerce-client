@@ -15,7 +15,7 @@ describe("Burger Component", () => {
   beforeEach(() => {
     component = setUp({
       open: false,
-      handleOpen: () => null,
+      handleOpen: jest.fn,
     });
   });
 

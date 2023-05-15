@@ -61,7 +61,7 @@ export const filtersWithoutSearch = {
   filters: {
     isCashOnDeliveryAvailable: false,
   },
-  handleSetFilter: () => null,
+  handleSetFilter: jest.fn,
 };
 
 export const filtersWithSearch = {
@@ -71,7 +71,7 @@ export const filtersWithSearch = {
     q: "abc",
     qFields: "title,category",
   },
-  handleSetFilter: () => null,
+  handleSetFilter: jest.fn,
 };
 
 export const cartProducts = [

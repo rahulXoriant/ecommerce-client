@@ -26,6 +26,7 @@ const Category = () => {
 
   return (
     <ProductContainer
+      data-test="search-page"
       isSearchEnabled={true}
       filters={filters}
       handleSetFilter={val => setFilters(val)}

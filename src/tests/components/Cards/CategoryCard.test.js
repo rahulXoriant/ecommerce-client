@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import CategoryCard from "../../../components/Cards/CategoryCard";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
-import { findByTestAtrr, testStore } from "../../../utils/testUtils";
-import { initialState } from "../../constants";
+import { checkProps, findByTestAtrr, testStore } from "../../../utils/testUtils";
+import { allCategory, initialState } from "../../constants";
 
 jest.mock("../../../store/redux-hooks");
 
@@ -15,7 +15,7 @@ const setUp = (props = {}) => {
   const store = testStore(initialState);
   const component = shallow(
     <Provider store={store}>
-      <CategoryCard range={componentProps.range} />
+      <CategoryCard {...componentProps} />
     </Provider>,
   )
     .childAt(0)
@@ -25,14 +25,13 @@ const setUp = (props = {}) => {
 
 describe("Shallow CategoryCard", () => {
   let component;
+  const props = {
+    category: allCategory[0],
+  };
   beforeEach(() => {
     component = setUp({
       initialState: initialState,
-      category: {
-        id: 1,
-        name: "Test Name",
-        slug: "test-slug",
-      },
+      ...props,
     });
   });
 
@@ -41,8 +40,18 @@ describe("Shallow CategoryCard", () => {
     expect(wrapper.length).toBe(1);
   });
 
+  it("Should not throw warnings with expected props", () => {
+    const propError = checkProps(component, props);
+    expect(propError).toBeUndefined();
+  });
+
   it("Should render category image", () => {
     const image = findByTestAtrr(component, "category-image");
     expect(image.length).toBe(1);
+  });
+
+  it("Should render category name", () => {
+    const name = findByTestAtrr(component, "category-name");
+    expect(name.text()).toBe(props.category.name);
   });
 });

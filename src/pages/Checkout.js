@@ -17,7 +17,7 @@ const Checkout = () => {
     ),
   );
 
-  return <CheckoutContainer cart={cart} total={total} />;
+  return <CheckoutContainer cart={cart} total={total} data-test="checkout-page" />;
 };
 
 export default Checkout;

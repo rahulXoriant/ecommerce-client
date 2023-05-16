@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
+import { CONST_VALUE } from "../../../constants";
 import FilterCard from "../../Cards/FilterCard";
 import ProductCard from "../../Cards/ProductCard";
 import Loader from "../../Common/Loader";
@@ -21,7 +22,7 @@ const ProductContainer = ({ isSearchEnabled, filters, handleSetFilter, products,
       <Loader data-test="product-loader" />
     ) : isEmpty(products.value) ? (
       <Box className="no-product-container" data-test="no-product-container">
-        <Box>No Products Available</Box>
+        <Box>{CONST_VALUE.NO_PRODUCTS_AVAILABLE}</Box>
       </Box>
     ) : (
       <ProductList data-test="product-list">

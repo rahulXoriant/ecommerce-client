@@ -33,6 +33,7 @@ const Category = () => {
       handleSetFilter={val => setFilters(val)}
       products={products}
       amount={amount}
+      data-test="product-page"
     />
   );
 };

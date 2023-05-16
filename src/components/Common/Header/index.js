@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../../assets/images/logo.png";
+import { CONST_VALUE } from "../../../constants";
 import { useAppSelector } from "../../../store/redux-hooks";
 import Burger from "../Burger";
 import { Cart, Container, StyledMenu } from "./styles";
@@ -22,14 +23,14 @@ const Header = ({ range }) => {
           <Burger open={open} handleOpen={val => setOpen(val)} />
           <StyledMenu open={open}>
             <Link to="/" className="link">
-              <strong>Home</strong>
+              <strong>{CONST_VALUE.HOME}</strong>
             </Link>
             <Link to="/search" className="link">
-              <strong>Search</strong>
+              <strong>{CONST_VALUE.SEARCH}</strong>
             </Link>
             <Cart to="/checkout">
               <div>
-                <strong>Checkout</strong>
+                <strong>{CONST_VALUE.CHECKOUT}</strong>
                 <span>
                   {cartSize} {cartSize > 1 ? "items" : "item"}
                 </span>

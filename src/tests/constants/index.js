@@ -11,6 +11,11 @@ export const allCategory = [
     name: "TestCategory2",
     slug: "test-category-2",
   },
+  {
+    id: 3,
+    name: "TestCategory3",
+    slug: "test-category-3",
+  },
 ];
 
 export const allProducts = [
@@ -46,9 +51,9 @@ export const allProductsWithFormattedPrice = allProducts.map(product => ({
 }));
 
 export const productAmount = {
-  1: 5,
-  2: 3,
-  3: 6,
+  1: 2,
+  2: 0,
+  3: 0,
 };
 
 export const product = {
@@ -83,7 +88,7 @@ export const cartProducts = [
 ];
 
 export const initialState = {
-  cart: [cartProducts],
+  cart: [],
   category: {
     value: allCategory,
     loading: false,

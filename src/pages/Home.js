@@ -15,7 +15,7 @@ const Home = () => {
     loadCategories();
   }, []);
 
-  return <CategoryContainer categories={categories} />;
+  return <CategoryContainer categories={categories} data-test="category-page" />;
 };
 
 export default Home;

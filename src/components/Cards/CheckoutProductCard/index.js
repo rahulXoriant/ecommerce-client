@@ -40,7 +40,7 @@ const CheckoutProductCard = ({ product }) => {
                 onClick={() => decrement(product)}
               />
             </button>
-            <input type="number" readOnly value={product.amount} />
+            <input type="number" readOnly value={product.amount} data-test="product-amount" />
             <button type="button">
               <AddCircleOutlineIcon
                 style={{ fontSize: 24, color: "#000" }}
@@ -53,7 +53,7 @@ const CheckoutProductCard = ({ product }) => {
           </div>
           <div className="product-subtotal-small-device">
             <div>
-              <h4>{product.subtotal}</h4>
+              <h4 data-test="product-subtotal">{product.subtotal}</h4>
             </div>
           </div>
         </div>

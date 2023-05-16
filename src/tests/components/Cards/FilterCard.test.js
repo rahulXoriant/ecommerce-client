@@ -5,7 +5,7 @@ import FilterCard from "../../../components/Cards/FilterCard";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
 // import { formatPrice } from "../../../utils/format";
-import { findByTestAtrr, testStore } from "../../../utils/testUtils";
+import { checkProps, findByTestAtrr, testStore } from "../../../utils/testUtils";
 import { filtersWithoutSearch, filtersWithSearch, initialState } from "../../constants";
 
 jest.mock("../../../store/redux-hooks");
@@ -30,13 +30,23 @@ const setUp = (props = {}) => {
 
 describe("Shallow FilterCard without Search", () => {
   let component;
+  const props = {
+    ...filtersWithoutSearch,
+  };
   beforeEach(() => {
-    component = setUp({ ...filtersWithoutSearch });
+    component = setUp({
+      ...props,
+    });
   });
 
   it("Should render without errors", () => {
     const wrapper = findByTestAtrr(component, "filter-card");
     expect(wrapper.length).toBe(1);
+  });
+
+  it("Should not throw warnings with expected props", () => {
+    const propError = checkProps(component, props);
+    expect(propError).toBeUndefined();
   });
 
   it("Should render filter title", () => {
@@ -57,16 +67,24 @@ describe("Shallow FilterCard without Search", () => {
 
 describe("Shallow FilterCard with search", () => {
   let component;
+  const props = {
+    ...filtersWithSearch,
+  };
   beforeEach(() => {
     component = setUp({
       initialState: initialState,
-      ...filtersWithSearch,
+      ...props,
     });
   });
 
   it("Should render without errors", () => {
     const wrapper = findByTestAtrr(component, "filter-card");
     expect(wrapper.length).toBe(1);
+  });
+
+  it("Should not throw warnings with expected props", () => {
+    const propError = checkProps(component, props);
+    expect(propError).toBeUndefined();
   });
 
   it("Should not render filter title", () => {

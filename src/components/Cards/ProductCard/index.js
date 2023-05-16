@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 
+import { CONST_VALUE } from "../../../constants";
 import * as CartActions from "../../../store/modules/actions/cart.actions";
 import { useAppDispatch } from "../../../store/redux-hooks";
 import { ProductCard as StyledProductCard } from "./styles";
@@ -44,7 +45,7 @@ const ProductCard = ({ product, amount }) => {
           </Typography>
           <br />
           <Typography variant="h6">
-            COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
+            {CONST_VALUE.COD_AVAILABLE}: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
           </Typography>
         </CardContent>
         <CardActions>
@@ -62,7 +63,7 @@ const ProductCard = ({ product, amount }) => {
                   />
                 </div>
                 <div>
-                  <input type="number" readOnly value={amount} />
+                  <input data-test="product-amount" type="number" readOnly value={amount} />
                 </div>
                 <div className="cart-action-button" data-test="cart-action-button">
                   <AddCircleOutlineIcon
@@ -73,19 +74,23 @@ const ProductCard = ({ product, amount }) => {
                 </div>
               </div>
               <div className="cart-action-button" data-test="cart-action-button">
-                <DeleteIcon 
-                  data-test="delete-product-action" 
-                  style={{ fontSize: 36 }} 
-                  onClick={() => removeFromCart(product)} 
+                <DeleteIcon
+                  data-test="delete-product-action"
+                  style={{ fontSize: 36 }}
+                  onClick={() => removeFromCart(product)}
                 />
               </div>
             </div>
           ) : (
-            <button type="button" data-test="add-to-cart-action" onClick={() => handleAddProduct(product.id)}>
+            <button
+              type="button"
+              data-test="add-to-cart-action"
+              onClick={() => handleAddProduct(product.id)}
+            >
               <div>
                 <AddShoppingCartIcon size={16} color="#fff" />
               </div>
-              <span>Add to Cart</span>
+              <span>{CONST_VALUE.ADD_TO_CART}</span>
             </button>
           )}
         </CardActions>

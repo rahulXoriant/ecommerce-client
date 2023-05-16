@@ -2,6 +2,7 @@ import { shallow } from "enzyme";
 import { Provider } from "react-redux";
 
 import CheckoutContainer from "../../../components/Containers/CheckoutContainer";
+import { CONST_VALUE } from "../../../constants";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
 import { formatPrice } from "../../../utils/format";
@@ -24,19 +25,27 @@ const setUp = (props = {}) => {
   return component;
 };
 
-describe("Shallow CheckoutContainer with all products", () => {
+describe("Shallow CheckoutContainer with one product in cart", () => {
   let component;
+  const cartTotal = formatPrice(
+    cartProducts.reduce((product, acc) => product.amount * product.price + acc, 0),
+  );
   beforeEach(() => {
     component = setUp({
-      initialState: initialState,
+      initialState: {
+        ...initialState,
+        cart: cartProducts,
+      },
       ...filtersWithSearch,
       cart: cartProducts,
-      total: formatPrice(cartProducts.reduce((product, acc) => product.subtotal + acc, 0)),
+      total: cartTotal,
     });
   });
 
   it("Should render without errors", () => {
     const wrapper = findByTestAtrr(component, "checkout-container");
+    const heading = findByTestAtrr(wrapper, "heading");
+    expect(heading.text()).toBe(CONST_VALUE.MY_CART);
     expect(wrapper.length).toBe(1);
   });
 
@@ -45,10 +54,15 @@ describe("Shallow CheckoutContainer with all products", () => {
     expect(noProductContainer.length).toBe(0);
   });
 
-  it("Should show all products", () => {
+  it("Should show all products in cart", () => {
     const productList = findByTestAtrr(component, "product-list");
     expect(productList.length).toBe(1);
     expect(findByTestAtrr(productList, "product-card").length).toBe(cartProducts.length);
+  });
+
+  it("Should show correct total", () => {
+    const renderedCartTotal = findByTestAtrr(component, "total");
+    expect(renderedCartTotal.text()).toBe(cartTotal);
   });
 });
 
@@ -68,10 +82,11 @@ describe("Shallow CheckoutContainer with no products", () => {
     expect(wrapper.length).toBe(1);
   });
 
-  it("Should show no products container", () => {
+  it("Should show no products in cart", () => {
     const productList = findByTestAtrr(component, "product-list");
     expect(productList.length).toBe(0);
     const noProductContainer = findByTestAtrr(component, "no-product-cart-container");
+    expect(noProductContainer.text()).toBe(CONST_VALUE.NO_PRODUCTS_IN_CART);
     expect(noProductContainer.length).toBe(1);
   });
 });

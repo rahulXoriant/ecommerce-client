@@ -74,7 +74,7 @@ describe("Shallow ProductContainer with no products and search enabled", () => {
         loading: false,
         value: [],
       },
-      amount: productAmount,
+      amount: {},
     });
   });
 
@@ -103,7 +103,7 @@ describe("Shallow ProductContainer page loader and search enabled", () => {
         loading: true,
         value: null,
       },
-      amount: productAmount,
+      amount: {},
     });
   });
 
@@ -132,7 +132,7 @@ describe("Shallow ProductContainer with no products and search disabled", () => 
         loading: false,
         value: [],
       },
-      amount: productAmount,
+      amount: {},
     });
   });
 

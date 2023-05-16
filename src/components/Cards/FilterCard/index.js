@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
+import { CONST_VALUE } from "../../../constants";
 import { useDebounce } from "../../../hooks";
 import { FilterCard as StyledFilterCard } from "./styles";
 
@@ -91,7 +92,7 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
               }
             />
           ) : (
-            <Box data-test="filter-title">Filters</Box>
+            <Box data-test="filter-title">{CONST_VALUE.FILTERS}</Box>
           )}
           <FormControlLabel
             data-test="filter-is-cod-available-checkbox"

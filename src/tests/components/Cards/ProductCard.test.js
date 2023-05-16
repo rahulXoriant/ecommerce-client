@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import ProductCard from "../../../components/Cards/ProductCard";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
-import { findByTestAtrr, testStore } from "../../../utils/testUtils";
+import { checkProps, findByTestAtrr, testStore } from "../../../utils/testUtils";
 import { initialState, product } from "../../constants";
 
 jest.mock("../../../store/redux-hooks");
@@ -23,19 +23,27 @@ const setUp = (props = {}) => {
   return component;
 };
 
-describe("Shallow ProductCard, ProductNot in Cart", () => {
+describe("Shallow ProductCard, Product Not in Cart", () => {
   let component;
+  const props = {
+    product,
+    amount: 0,
+  };
   beforeEach(() => {
     component = setUp({
       initialState: initialState,
-      product,
-      amount: 0
+      ...props,
     });
   });
 
   it("Should render without errors", () => {
     const wrapper = findByTestAtrr(component, "product-card");
     expect(wrapper.length).toBe(1);
+  });
+
+  it("Should not throw warnings with expected props", () => {
+    const propError = checkProps(component, props);
+    expect(propError).toBeUndefined();
   });
 
   it("Should render product image", () => {
@@ -66,17 +74,25 @@ describe("Shallow ProductCard, ProductNot in Cart", () => {
 
 describe("Shallow ProductCard, Product in Cart", () => {
   let component;
+  const props = {
+    product,
+    amount: 2,
+  };
   beforeEach(() => {
     component = setUp({
       initialState: initialState,
-      product,
-      amount: 2
+      ...props,
     });
   });
 
   it("Should render without errors", () => {
     const wrapper = findByTestAtrr(component, "product-card");
     expect(wrapper.length).toBe(1);
+  });
+
+  it("Should not throw warnings with expected props", () => {
+    const propError = checkProps(component, props);
+    expect(propError).toBeUndefined();
   });
 
   it("Should render product image", () => {

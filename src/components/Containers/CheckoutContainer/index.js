@@ -3,32 +3,33 @@ import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
 import CheckoutProductCard from "../../../components/Cards/CheckoutProductCard";
+import { CONST_VALUE } from "../../../constants";
 import { CartContainer, CheckoutContainer as StyledCheckoutContainer, Total } from "./styles";
 
 const CheckoutContainer = ({ cart, total }) => (
-  <StyledCheckoutContainer>
+  <StyledCheckoutContainer data-test="checkout-container">
     {isEmpty(cart) ? (
-      <Box className="no-product-cart-container">
-        <Box>No Products in Cart</Box>
+      <Box className="no-product-cart-container" data-test="no-product-cart-container">
+        <Box>{CONST_VALUE.NO_PRODUCTS_IN_CART}</Box>
       </Box>
     ) : (
       <>
-        <CartContainer>
+        <CartContainer data-test="cart-container">
           <div>
-            <h2>My Cart</h2>
+            <h2 data-test="heading">{CONST_VALUE.MY_CART}</h2>
           </div>
-          <div className="product-details">
+          <div className="product-details" data-test="product-list">
             {cart.map(product => (
-              <CheckoutProductCard key={product.id} product={product} />
+              <CheckoutProductCard key={product.id} product={product} data-test="product-card" />
             ))}
           </div>
         </CartContainer>
         <footer>
-          <button type="button">Place Order</button>
+          <button type="button">{CONST_VALUE.PLACE_ORDER}</button>
 
           <Total>
-            <span>Total:</span>
-            <h2>{total}</h2>
+            <span>{CONST_VALUE.TOTAL}</span>
+            <h2 data-test="total">{total}</h2>
           </Total>
         </footer>
       </>

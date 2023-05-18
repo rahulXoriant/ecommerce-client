@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
+import { CONST_VALUE } from "../../../constants";
 import { useDebounce } from "../../../hooks";
 import { FilterCard as StyledFilterCard } from "./styles";
 
@@ -65,11 +66,12 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
   );
 
   return (
-    <StyledFilterCard isSearchEnabled={isSearchEnabled}>
+    <StyledFilterCard isSearchEnabled={isSearchEnabled} data-test="filter-card">
       <Card className="filters" component="div">
         <CardContent>
           {isSearchEnabled ? (
             <FormControlLabel
+              data-test="filter-search-input"
               sx={{ flexGrow: 1 }}
               control={
                 <TextField
@@ -90,9 +92,10 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
               }
             />
           ) : (
-            <Box>Filters</Box>
+            <Box data-test="filter-title">{CONST_VALUE.FILTERS}</Box>
           )}
           <FormControlLabel
+            data-test="filter-is-cod-available-checkbox"
             control={
               <Checkbox
                 checked={!!filters.isCashOnDeliveryAvailable}

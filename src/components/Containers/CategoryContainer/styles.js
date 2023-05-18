@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const CategoryContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 100px;
+  > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 100px;
+  }
 
   > div.no-category-container {
     width: 100%;

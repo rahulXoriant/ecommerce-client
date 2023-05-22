@@ -5,7 +5,7 @@ import { LoaderContainer } from "./styles";
 
 const Loader = () => {
   return (
-    <LoaderContainer>
+    <LoaderContainer data-test="loader">
       <CircularProgress
         color="warning"
         sx={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}

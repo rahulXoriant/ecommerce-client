@@ -2,20 +2,25 @@ import Box from "@mui/material/Box";
 import { isEmpty } from "lodash";
 import PropTypes from "prop-types";
 
+import { CONST_VALUE } from "../../../constants";
 import CategoryCard from "../../Cards/CategoryCard";
 import Loader from "../../Common/Loader";
 import { CategoryContainer as StyledCategoryContainer } from "./styles";
 
 const CategoryContainer = ({ categories }) => (
-  <StyledCategoryContainer>
+  <StyledCategoryContainer data-test="category-container">
     {categories.loading ? (
-      <Loader />
+      <Loader data-test="category-loader" />
     ) : isEmpty(categories.value) ? (
-      <Box className="no-category-container">
-        <Box>No Category Available</Box>
+      <Box className="no-category-container" data-test="no-category-container">
+        <Box>{CONST_VALUE.NO_CATEGORY_AVAILABLE}</Box>
       </Box>
     ) : (
-      categories.value.map(category => <CategoryCard key={category.id} category={category} />)
+      <Box data-test="category-list">
+        {categories.value.map(category => (
+          <CategoryCard key={category.id} category={category} data-test="category-card" />
+        ))}
+      </Box>
     )}
   </StyledCategoryContainer>
 );

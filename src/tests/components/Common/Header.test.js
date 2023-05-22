@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import { Provider } from "react-redux";
+import * as router from "react-router";
 
 import Header from "../../../components/Common/Header";
 import { useAppSelector } from "../../../store/redux-hooks";
@@ -8,9 +9,11 @@ import { findByTestAtrr, testStore } from "../../../utils/testUtils";
 import { initialState } from "../../constants";
 
 jest.mock("../../../store/redux-hooks");
+const navigate = jest.fn();
 
 const setUp = (props = {}) => {
   const { initialState, ...componentProps } = props;
+  jest.spyOn(router, "useNavigate").mockImplementation(() => navigate);
   useAppSelector.mockImplementation(testUserAppSelector);
   const store = testStore(initialState);
   const component = shallow(

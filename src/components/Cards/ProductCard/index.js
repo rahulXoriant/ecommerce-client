@@ -36,14 +36,14 @@ const ProductCard = ({ product, amount }) => {
     <StyledProductCard data-test="product-card">
       <Card className="product-card" component="div">
         <CardContent className="product-card-content">
-          <div className="product-image">
+          <div data-test="product-image" className="product-image">
             <img src={product.image} alt={product.title} />
           </div>
           <div>
-            <Typography variant="h5" component="h5">
+            <Typography data-test="product-title" variant="h5" component="h5">
               {product.title}
             </Typography>
-            <Typography variant="p" component="span">
+            <Typography data-test="product-price" variant="p" component="span">
               {product.priceFormatted}
             </Typography>
             <br />

@@ -94,6 +94,7 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
             <Box data-test="filter-title">{CONST_VALUE.FILTERS}</Box>
           )}
           <FormControlLabel
+            className="filter"
             data-test="filter-is-cod-available-checkbox"
             control={
               <Checkbox

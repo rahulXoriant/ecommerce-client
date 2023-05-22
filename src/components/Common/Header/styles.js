@@ -52,7 +52,10 @@ export const StyledMenu = styled.nav`
     padding: 6rem;
   }
 
-  a {
+  button.link {
+    background: transparent;
+    border: none;
+    outline: none;
     font-size: 1rem;
     padding: 1rem 0;
     font-weight: bold;
@@ -72,7 +75,32 @@ export const StyledMenu = styled.nav`
   }
 `;
 
-export const Cart = styled(Link)`
+export const Cart = styled.button`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  div {
+    text-align: right;
+    margin-right: 10px;
+
+    strong {
+      display: block;
+    }
+
+    span {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+`;
+
+export const CartLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;

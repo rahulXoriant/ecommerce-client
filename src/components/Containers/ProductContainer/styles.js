@@ -8,7 +8,7 @@ export const ProductContainer = styled.div`
   margin-top: 100px;
 
   @media (max-width: 480px) {
-    margin-top: 60px;
+    margin-top: ${props => props.isSearchEnabled ? "100px" : "60px"};
   }
 
   > div.no-product-container {

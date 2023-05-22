@@ -8,26 +8,31 @@ export const FilterCard = styled.div`
   min-width: 300px;
   top: 82px;
 
-  div.filters > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 24px;
-    align-items: center;
-    gap: 20px;
-    align-items: stretch;
-    padding: 16px;
+  > div.filters {
+    max-width: calc(100vw - 40px);
 
-    @media (max-width: 480px) {
-      flex-direction: ${params => (params.isSearchEnabled ? "column" : "row")};
-    }
-
-    > div.filter {
+    > div {
       display: flex;
       flex-direction: row;
-      font-size: 20px;
+      justify-content: space-between;
+      font-size: 24px;
       align-items: center;
-      cursor: pointer;
+      gap: 20px;
+      align-items: stretch;
+      padding: 16px;
+  
+      @media (max-width: 480px) {
+        flex-direction: ${params => (params.isSearchEnabled ? "column" : "row")};
+      }
+  
+      > .filter {
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        align-items: center;
+        cursor: pointer;
+        margin: 0;
+      }
     }
   }
 `;

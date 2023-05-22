@@ -47,12 +47,11 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
         handleSetFilter({
           ...filters,
           q: value.trim().toLowerCase(),
-          qFields: "title,category",
         });
       } else {
         handleSetFilter(
           Object.keys(filters)
-            .filter(key => !["q", "qFields"].includes(key))
+            .filter(key => !["q"].includes(key))
             .reduce((acc, key) => {
               acc[key] = filters[key];
               return acc;

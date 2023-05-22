@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import { all, call, put, select, takeLatest } from "redux-saga/effects";
 
 import api from "../../../services/api";
@@ -17,9 +18,12 @@ function* addToCart(action) {
     const { id } = action.payload;
     const productExists = yield select(state => state.cart.find(p => p.id === id));
 
-    const stock = yield call(api.get, `/stock/${id}`);
+    let stock;
+    const response = yield call(api.get, `/api/products/stocks/${id}/`);
+    if (!isEmpty(response.data) && !isEmpty(response.data.body))
+      stock = response.data.body.stock;
 
-    const stockAmount = stock.data.amount;
+    const stockAmount = stock.amount;
     const currentAmount = productExists ? productExists.amount : 0;
     const amount = currentAmount + 1;
 
@@ -32,12 +36,15 @@ function* addToCart(action) {
       yield put(updateAmountSuccess(id, amount));
       showTostMessage("success", "Updated amount successfully.");
     } else {
-      const response = yield call(api.get, `/products/${id}`);
+      let productDetails;
+      const productResponse = yield call(api.get, `/api/products/${id}/`);
+      if (!isEmpty(productResponse.data) && !isEmpty(productResponse.data.body))
+        productDetails = productResponse.data.body.product;
 
       const data = {
-        ...response.data,
+        ...productDetails,
         amount: 1,
-        priceFormatted: formatPrice(response.data.price),
+        priceFormatted: formatPrice(productDetails.price),
       };
       yield put(addToCartSuccess(data));
       showTostMessage("success", "Added to cart successfully.");
@@ -51,8 +58,12 @@ function* updateAmount({ id, amount }) {
   try {
     if (amount <= 0) return;
 
-    const stock = yield call(api.get, `/stock/${id}`);
-    const stockAmount = stock.data.amount;
+    let stock;
+    const response = yield call(api.get, `/api/products/stocks/${id}/`);
+    if (!isEmpty(response.data) && !isEmpty(response.data.body))
+      stock = response.data.body.stock;
+
+    const stockAmount = stock.amount;
 
     if (amount > stockAmount) {
       showTostMessage("warning", "Ordered quantity out of stock.");

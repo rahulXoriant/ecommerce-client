@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 
 import api from "../../../services/api";
@@ -11,12 +12,14 @@ import {
 function* getProducts(action) {
   try {
     const { filter } = action;
-    const products = yield call(api.get, `/products?${jsonToQueryString(filter)}`);
-    const data = products.data.map(product => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }));
-    yield put(getProductsSuccess(data));
+    const response = yield call(api.get, `/api/products/?${jsonToQueryString(filter)}`);
+    if (!isEmpty(response.data) && !isEmpty(response.data.body)) {
+      const data = response.data.body.products.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+      yield put(getProductsSuccess(data));
+    }
   } catch (err) {
     yield put(getProductsRejected(err.message));
   }

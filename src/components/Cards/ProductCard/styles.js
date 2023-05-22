@@ -19,33 +19,49 @@ export const ProductCard = styled.div`
     background: #fff;
     border-radius: 4px;
 
+    > div.product-card-content {
+      flex-grow: 1;
+    }
+
     > div {
-      > img {
+      display: flex;
+      flex-direction: column;
+
+      div.product-image {
+        flex-grow: 1;
+        display: flex;
         align-self: center;
-        width: 100%;
-        height: auto;
+        
+        img {
+          align-self: center;
+          width: 100%;
+          height: auto;
+        }
+      }   
+
+      div {
+        > h5 {
+          font-size: 16px;
+          line-height: 20px;
+          color: #333;
+          margin-top: 5px;
+        }
+  
+        > h6 {
+          font-size: 12px;
+          line-height: 12px;
+          color: #333;
+          margin-top: 5px;
+          text-align: right;
+        }
+  
+        > span {
+          font-size: 21px;
+          font-weight: bold;
+          margin: 5px 0 20px;
+        }
       }
 
-      > h5 {
-        font-size: 16px;
-        line-height: 20px;
-        color: #333;
-        margin-top: 5px;
-      }
-
-      > h6 {
-        font-size: 12px;
-        line-height: 12px;
-        color: #333;
-        margin-top: 5px;
-        text-align: right;
-      }
-
-      > span {
-        font-size: 21px;
-        font-weight: bold;
-        margin: 5px 0 20px;
-      }
 
       div.cart-actions {
         display: flex;

@@ -9,7 +9,7 @@ import Loader from "../../Common/Loader";
 import { ProductContainer as StyledProductContainer, ProductList } from "./styles";
 
 const ProductContainer = ({ isSearchEnabled, filters, handleSetFilter, products, amount }) => (
-  <StyledProductContainer data-test="product-container">
+  <StyledProductContainer isSearchEnabled={isSearchEnabled} data-test="product-container">
     {isSearchEnabled || !isEmpty(products?.value) ? (
       <FilterCard
         data-test="product-filter"

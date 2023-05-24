@@ -1,17 +1,25 @@
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 
 import logo from "../../../assets/images/logo.png";
 import { CONST_VALUE } from "../../../constants";
 import { useAppSelector } from "../../../store/redux-hooks";
 import Burger from "../Burger";
-import { Cart, Container, StyledMenu } from "./styles";
+import { Cart, CartLink, Container, StyledMenu } from "./styles";
 
 const Header = ({ range }) => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const cartSize = useAppSelector(state => state.cart.length);
+
+  const handleMenuClick = (e, to) => {
+    e.preventDefault();
+    setOpen(false);
+    navigate(to);
+  };
+
   return (
     <Container data-test="header-container">
       <Link to="/">
@@ -22,13 +30,22 @@ const Header = ({ range }) => {
         <>
           <Burger open={open} handleOpen={val => setOpen(val)} />
           <StyledMenu open={open}>
-            <Link to="/" className="link">
+            <button 
+              className="link" 
+              onClick={e => handleMenuClick(e, "")} 
+            >
               <strong>{CONST_VALUE.HOME}</strong>
-            </Link>
-            <Link to="/search" className="link">
+            </button>
+            <button 
+              className="link" 
+              onClick={e => handleMenuClick(e, "search")} 
+            >
               <strong>{CONST_VALUE.SEARCH}</strong>
-            </Link>
-            <Cart to="/checkout">
+            </button>
+            <Cart 
+              className="link" 
+              onClick={e => handleMenuClick(e, "checkout")} 
+            >
               <div>
                 <strong>{CONST_VALUE.CHECKOUT}</strong>
                 <span>
@@ -47,7 +64,7 @@ const Header = ({ range }) => {
           <Link to="/search" className="link">
             <strong>Search</strong>
           </Link>
-          <Cart to="/checkout" className="link">
+          <CartLink to="/checkout" className="link">
             <div>
               <strong>Checkout</strong>
               <span>
@@ -55,7 +72,7 @@ const Header = ({ range }) => {
               </span>
             </div>
             <ShoppingCartCheckoutIcon size={60} color="warning" />
-          </Cart>
+          </CartLink>
         </div>
       )}
     </Container>

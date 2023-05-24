@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 
 import api from "../../../services/api";
@@ -9,8 +10,9 @@ import {
 
 function* getCategories() {
   try {
-    const categories = yield call(api.get, "/category");
-    yield put(getCategoriesSuccess(categories.data));
+    const response = yield call(api.get, "api/products/categories/");
+    if (!isEmpty(response.data) && !isEmpty(response.data.body))
+      yield put(getCategoriesSuccess(response.data.body.categories));
   } catch (err) {
     yield put(getCategoriesRejected(err.message));
   }

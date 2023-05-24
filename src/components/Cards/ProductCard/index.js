@@ -35,18 +35,22 @@ const ProductCard = ({ product, amount }) => {
   return (
     <StyledProductCard data-test="product-card">
       <Card className="product-card" component="div">
-        <CardContent>
-          <img src={product.image} alt={product.title} data-test="product-image" />
-          <Typography variant="h5" component="h5" data-test="product-title">
-            {product.title}
-          </Typography>
-          <Typography variant="p" component="span" data-test="product-price">
-            {product.priceFormatted}
-          </Typography>
-          <br />
-          <Typography variant="h6">
-            {CONST_VALUE.COD_AVAILABLE}: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
-          </Typography>
+        <CardContent className="product-card-content">
+          <div data-test="product-image" className="product-image">
+            <img src={product.image} alt={product.title} />
+          </div>
+          <div>
+            <Typography data-test="product-title" variant="h5" component="h5">
+              {product.title}
+            </Typography>
+            <Typography data-test="product-price" variant="p" component="span">
+              {product.priceFormatted}
+            </Typography>
+            <br />
+            <Typography variant="h6">
+              COD Available: {product.isCashOnDeliveryAvailable ? "Yes" : "No"}
+            </Typography>
+          </div>
         </CardContent>
         <CardActions>
           {amount ? (

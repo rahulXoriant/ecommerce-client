@@ -19,7 +19,7 @@ export const CheckoutProductCard = styled.div`
       height: 164px;
 
       @media (max-width: 480px) {
-        height: 100px;
+        height: 72px;
       }
     }
 

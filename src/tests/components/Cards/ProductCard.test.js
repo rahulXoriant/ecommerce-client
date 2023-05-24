@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import ProductCard from "../../../components/Cards/ProductCard";
 import { useAppSelector } from "../../../store/redux-hooks";
 import { testUserAppSelector } from "../../../store/test-app-selector";
+import { formatPrice } from "../../../utils/format";
 import { checkProps, findByTestAtrr, testStore } from "../../../utils/testUtils";
 import { initialState, product } from "../../constants";
 
@@ -59,6 +60,7 @@ describe("Shallow ProductCard, Product Not in Cart", () => {
   it("Should show correct price", () => {
     const price = findByTestAtrr(component, "product-price");
     expect(price.length).toBe(1);
+    expect(price.text()).toBe(formatPrice(product.price));
   });
 
   it("Should show add to cart button", () => {
@@ -108,6 +110,7 @@ describe("Shallow ProductCard, Product in Cart", () => {
   it("Should show correct price", () => {
     const price = findByTestAtrr(component, "product-price");
     expect(price.length).toBe(1);
+    expect(price.text()).toBe(formatPrice(product.price));
   });
 
   it("Should not show add to cart button", () => {

@@ -48,12 +48,11 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
         handleSetFilter({
           ...filters,
           q: value.trim().toLowerCase(),
-          qFields: "title,category",
         });
       } else {
         handleSetFilter(
           Object.keys(filters)
-            .filter(key => !["q", "qFields"].includes(key))
+            .filter(key => !["q"].includes(key))
             .reduce((acc, key) => {
               acc[key] = filters[key];
               return acc;
@@ -95,6 +94,7 @@ const FilterCard = ({ isSearchEnabled, filters, handleSetFilter }) => {
             <Box data-test="filter-title">{CONST_VALUE.FILTERS}</Box>
           )}
           <FormControlLabel
+            className="filter"
             data-test="filter-is-cod-available-checkbox"
             control={
               <Checkbox
